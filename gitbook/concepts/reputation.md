@@ -23,12 +23,11 @@ INFT anchored reputation fixes both. The INFT is the agent's identity. The walle
 
 ```solidity
 struct Reputation {
-    uint64  totalJobs;          // count of settled jobs, lifetime
-    uint128 totalSettledWei;    // sum of wei settled (raw volume)
-    uint128 weightedScore;      // sqrt weighted by buyer volume (see below)
-    uint32  disputesLost;       // count of slashes against this service
-    uint32  disputesTotal;      // count of disputes initiated, settled or slashed
-    uint64  lastSettledAt;      // unix timestamp of most recent settled job
+    uint128 totalJobs;       // count of settled jobs, lifetime
+    uint128 totalVolume;     // sum of wei settled (raw volume to seller)
+    uint128 weightedScore;   // sqrt weighted by buyer volume (see below)
+    uint64  firstJobAt;      // unix timestamp of the first settled job
+    uint64  lastJobAt;       // unix timestamp of the most recent settled job
 }
 ```
 
@@ -66,11 +65,12 @@ The math: doubling spend gives `sqrt(2)` ≈ 1.414 times weight. Sybil is bounde
 
 The frontend at `/marketplace/[serviceId]` reads reputation directly from the contract and displays:
 
-* Total settled jobs (raw count)
-* Total $0G settled (raw volume)
+* Total settled jobs (raw count, from `totalJobs`)
+* Total $0G settled (raw volume to seller, from `totalVolume`)
 * Weighted score (the sqrt weighted number that's hard to fake)
-* Dispute record (count plus rate)
-* Last settled timestamp
+* First and last settled timestamps (from `firstJobAt` and `lastJobAt`)
+
+Dispute history is tracked separately on `SlashingArbiter` per service.
 
 INFT identity is also shown: the AgentNFT tokenId, the proxy address on chainscan, and the current `seller` wallet address.
 
@@ -80,7 +80,7 @@ INFT identity is also shown: the AgentNFT tokenId, the proxy address on chainsca
 
 * **Unsettled jobs.** `Pending`, `Sealed`, `Attested`, `Disputed` states don't count toward reputation. Only `Settled`.
 * **Expired jobs.** Buyer side reclaims don't penalize the seller (timeouts are buyer set).
-* **Slashed jobs.** These increment `disputesLost` instead, which is visible separately. A slash actively damages reputation.
+* **Slashed jobs.** These are tracked on `SlashingArbiter` rather than on the reputation record. A slash visibly damages a seller's standing because the bond redistributes, and the slashing event is on chain forever.
 
 ***
 
