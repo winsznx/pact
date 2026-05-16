@@ -107,9 +107,16 @@ export default function HomePage() {
             <span className="font-mono text-button text-deep-cosmos">
               0x4C1b546f…7ee8
             </span>
-            . Reproduce the run with{" "}
+            . Reproduce in your browser at{" "}
+            <a
+              href="/verify/2?autoplay=1"
+              className="font-mono text-sm text-midnight-navy underline decoration-fog-border underline-offset-4 hover:text-chartreuse-pulse hover:decoration-chartreuse-pulse transition-colors"
+            >
+              trypact.xyz/verify/2
+            </a>
+            , or end-to-end via{" "}
             <span className="font-mono text-sm">
-              pnpm --filter @pact/contracts smoke
+              pnpm --filter @pact/seller-reference test-e2e
             </span>
             .
           </p>

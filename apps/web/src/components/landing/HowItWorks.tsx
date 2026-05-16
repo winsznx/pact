@@ -24,14 +24,14 @@ const STEPS: ReadonlyArray<{
   {
     num: "1",
     title: "Buyer creates job",
-    body: "Buyer escrows $0G via PactEscrow.createJob(serviceId, inputCommitment). Funds locked. State: Pending.",
-    code: 'createJob(1, "0x9b2a…", { value: parseEther("0.001") })',
+    body: "Buyer escrows $0G via PactEscrow.createJob(serviceId, encryptedInput, timeout). Funds locked. State: Pending.",
+    code: 'createJob(1, "0x9b2a…", 300) { value: 0.001 ether }',
   },
   {
     num: "2",
     title: "Seller submits attestation",
-    body: "Seller calls submitAttestation(jobId, text, signature) with TEE-signed inference proof. Verifier recovers signer on-chain.",
-    code: 'submitAttestation(jobId, "df0870…", "0x99946…")',
+    body: "Seller calls submitAttestation(jobId, outputRoot, chatId, text, signature). AttestationVerifier recovers the signer on-chain and reverts on mismatch.",
+    code: 'submitAttestation(jobId, outputRoot, chatId, "df0870…", "0x99946…")',
   },
   {
     num: "3",
