@@ -165,9 +165,17 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 async function main(): Promise<void> {
-  await startPoller();
+  // Bind the HTTP listener FIRST so /healthz is reachable while the
+  // initial chain scan runs in the background. On 0G mainnet a 3M+ block
+  // backfill can take minutes; Railway's health check times out in 60s.
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`indexer listening on :${PORT}`);
+  });
+  // Fire and forget — startPoller() handles its own errors and keeps
+  // retrying via setInterval. /healthz reflects scan progress via
+  // store.lastBlock, but never gates request handling on it.
+  startPoller().catch((err) => {
+    console.error("indexer: startPoller crashed during boot:", err);
   });
 }
 
