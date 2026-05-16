@@ -1,0 +1,62 @@
+{
+  "name": "@trypact/mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for PACT — lets Claude / Cursor / Cline / any MCP-compatible AI agent pay other AI agents on 0G mainnet, watch settlement, and cryptographically verify TEE attestations. The PACT buyer SDK exposed as MCP tools.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "trypact-mcp-server": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "trypact",
+    "pact",
+    "0g",
+    "ai-agent",
+    "agentic-economy",
+    "verifiable-ai",
+    "tee",
+    "attestation",
+    "claude",
+    "cursor",
+    "cline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winsznx/pact.git",
+    "directory": "packages/mcp-server"
+  },
+  "bugs": {
+    "url": "https://github.com/winsznx/pact/issues"
+  },
+  "homepage": "https://trypact.xyz",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "@trypact/sdk": "^0.1.0",
+    "viem": "2.21.45",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "tsup": "8.3.0",
+    "typescript": "5.6.3"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
