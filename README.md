@@ -38,8 +38,8 @@ Reproduces the e2e flow against live 0G mainnet. Needs ~6 $0G in a burner wallet
 
 ```bash
 # Clone + install
-git clone https://github.com/winsznx/trypact.git
-cd trypact
+git clone https://github.com/winsznx/pact.git
+cd pact
 pnpm install
 
 # Configure env
@@ -83,15 +83,15 @@ Expect the full loop (createJob → inference → submitAttestation → Settled)
                    │   │  PactRegistry   │    │ SlashingArbiter  │  │
                    │   │ (Service + INFT)│    │ (bond + dispute) │  │
                    │   └────────┬────────┘    └────────┬─────────┘  │
-                   │            │                     │            │
-                   │            ▼                     │            │
-                   │   ┌─────────────────┐            │            │
-                   │   │ ReputationVault │◄───────────┘            │
-                   │   │ (sqrt-weighted, │   slash on fraud →      │
-                   │   │  INFT-bound)    │     bond redistributed  │
-                   │   └─────────────────┘                         │
-                   │            ▲                                  │
-                   │            │ tokenURI / ownerOf              │
+                   │            │                     │             │
+                   │            ▼                     │             │
+                   │   ┌─────────────────┐            │             │
+                   │   │ ReputationVault │◄───────────┘             │
+                   │   │ (sqrt-weighted, │   slash on fraud →       │
+                   │   │  INFT-bound)    │     bond redistributed   │
+                   │   └─────────────────┘                          │
+                   │            ▲                                   │
+                   │            │ tokenURI / ownerOf                │
                    │   ┌─────────────────┐                          │
                    │   │   AgentNFT      │                          │
                    │   │   (ERC-7857)    │                          │
@@ -100,10 +100,10 @@ Expect the full loop (createJob → inference → submitAttestation → Settled)
                                           ▲
                               JobCreated  │  submitAttestation
                                           │
-            ┌─────────────────────────────┴──────────────────────────┐
-            │           Seller reference agent (Node.js)             │
-            │                                                        │
-            │   poll PactEscrow.nextJobId every 3s                   │
+            ┌─────────────────────────────┴───────────────────────────┐
+            │           Seller reference agent (Node.js)              │
+            │                                                         │
+            │   poll PactEscrow.nextJobId every 3s                    │
             │      │                                                  │
             │      ▼                                                  │
             │   ┌──────────────────────────────┐    ┌───────────────┐ │
@@ -191,8 +191,10 @@ scripts/
 
 ---
 
-## License + Contributors
+## License
 
-License pending (likely Apache-2.0 with FSL deferral). 0G APAC Hackathon submission — see [docs/MASTER_PRD.md](docs/MASTER_PRD.md).
+[Apache License 2.0](LICENSE) — permissive, contracts and SDKs are free for any use.
 
-Built solo by Tim ([@winsznx](https://github.com/winsznx)) for 0G APAC Hackathon Track 3, May 2026.
+## Contributors
+
+Built solo by Tim ([@winsznx](https://github.com/winsznx)) for 0G APAC Hackathon Track 3, May 2026. PR's welcome on [github.com/winsznx/pact](https://github.com/winsznx/pact).

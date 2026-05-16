@@ -16,7 +16,7 @@ Three variants. Pick one, schedule for submission day morning UTC+8.
 > Same primitive as personal_sign. 5 of 5 0G primitives load-bearing.
 > First settled job → chainscan.0g.ai/tx/0xbb36752d…
 >
-> github.com/winsznx/trypact
+> github.com/winsznx/pact
 >
 > #0GHackathon #BuildOn0G @0G_labs @0g_CN @0g_Eco @HackQuest_
 
@@ -49,7 +49,7 @@ Three variants. Pick one, schedule for submission day morning UTC+8.
 > PACT solves that. Cryptographic settlement for AI inference on 0G.
 > 7 mainnet contracts. 60 seconds end to end. Try it.
 >
-> trypact.xyz · github.com/winsznx/trypact
+> trypact.xyz · github.com/winsznx/pact
 >
 > #0GHackathon #BuildOn0G @0G_labs @0g_CN @0g_Eco @HackQuest_
 

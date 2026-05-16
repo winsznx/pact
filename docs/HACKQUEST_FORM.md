@@ -97,7 +97,7 @@ All addresses verifiable at <https://chainscan.0g.ai>.
 
 | Field | Value |
 |---|---|
-| GitHub | <https://github.com/winsznx/trypact> |
+| GitHub | <https://github.com/winsznx/pact> |
 | Demo video | <TODO record per docs/DEMO_SCRIPT.md before submitting> |
 | Live URL | <https://trypact.xyz> — Vercel `sin1` region. Reproducible local fallback documented in README. |
 | X post | <TODO link the tweet once posted — use docs/X_POST.md as draft> |

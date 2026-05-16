@@ -31,7 +31,7 @@ const NAV_ITEMS: ReadonlyArray<{ label: string; href: string; external?: boolean
   { label: "Marketplace", href: "/marketplace" },
   { label: "Explore", href: "/explore" },
   { label: "Seller", href: "/seller" },
-  { label: "Protocol", href: "https://github.com/winsznx/trypact", external: true },
+  { label: "Protocol", href: "https://github.com/winsznx/pact", external: true },
 ];
 
 export function Nav() {

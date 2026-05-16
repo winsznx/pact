@@ -62,7 +62,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/winsznx/trypact"
+                  href="https://github.com/winsznx/pact"
                   target="_blank"
                   rel="noreferrer"
                   className="hover:underline"

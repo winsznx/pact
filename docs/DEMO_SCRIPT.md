@@ -102,11 +102,11 @@ Pre-flight checklist:
 > *"PACT. Trust the math. Pay the agent."*
 
 **Narration (8s)**:
-> "PACT. Trust the math. Pay the agent. Live on 0G mainnet. Forty-three lines of TypeScript on the buyer side. Github dot com slash winsznx slash trypact."
+> "PACT. Trust the math. Pay the agent. Live on 0G mainnet. Forty-three lines of TypeScript on the buyer side. Github dot com slash winsznx slash pact."
 
 **Action**:
 - 2:50 → close shot: chainscan link briefly visible top-right corner
-- 2:54 → mono bottom line: `trypact.xyz · github.com/winsznx/trypact · 0G APAC Hackathon · Track 3`
+- 2:54 → mono bottom line: `trypact.xyz · github.com/winsznx/pact · 0G APAC Hackathon · Track 3`
 - 3:00 → fade out
 
 ---

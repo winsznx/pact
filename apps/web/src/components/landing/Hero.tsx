@@ -99,7 +99,7 @@ export function Hero() {
             link instead of a third pill avoids button-soup. */}
         <div className="mt-24">
           <a
-            href="https://github.com/winsznx/trypact/blob/main/docs/MASTER_PRD.md"
+            href="https://github.com/winsznx/pact/blob/main/docs/MASTER_PRD.md"
             target="_blank"
             rel="noreferrer"
             className="text-body text-ice-veil/80 hover:text-frost-white underline decoration-ice-veil/30 underline-offset-4 hover:decoration-ice-veil/80 tracking-body"
