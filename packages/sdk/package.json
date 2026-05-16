@@ -1,0 +1,62 @@
+{
+  "name": "@trypact/sdk",
+  "version": "0.1.0",
+  "description": "Buyer SDK for PACT — settlement protocol for verifiable AI-as-a-Service on 0G mainnet. TEE-attested ECDSA + ERC-7857 reputation.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "0g",
+    "pact",
+    "trypact",
+    "verifiable-ai",
+    "tee",
+    "attestation",
+    "ecdsa",
+    "erc-7857",
+    "agent-economy",
+    "ai-marketplace",
+    "viem"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winsznx/pact.git",
+    "directory": "packages/sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/winsznx/pact/issues"
+  },
+  "homepage": "https://trypact.xyz",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "tsup": "8.3.0",
+    "typescript": "5.6.3",
+    "viem": "2.21.45"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  }
+}

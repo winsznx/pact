@@ -23,12 +23,47 @@
 **Demo**: <https://trypact.xyz> — Vercel + Singapore edge region (`sin1`) for lowest latency to 0G mainnet RPC. Local: <http://localhost:3001>.
 **Demo video**: *(record in progress — see [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md))*
 **Deploy guide**: [docs/DEPLOY.md](docs/DEPLOY.md) — reproducible Vercel + custom-domain + WC Cloud setup.
+**SDK**: [`@trypact/sdk`](https://www.npmjs.com/package/@trypact/sdk) on npm — `pnpm add @trypact/sdk viem`.
 
 ---
 
 ## What it is, in one sentence
 
 PACT is the settlement layer for AI-as-a-Service on 0G — buyers pay sellers for inference work, with cryptographic guarantee that the work was done by the exact agent INFT they paid for, by the registered TEE-broker provider, on the model the seller committed to. Payment auto-releases on attestation. Reputation accrues to the INFT.
+
+---
+
+## Integrate in 25 lines (SDK)
+
+```ts
+import { PactClient } from "@trypact/sdk";
+import { createPublicClient, createWalletClient, http } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+
+const chain = {
+  id: 16661, name: "0G Mainnet",
+  nativeCurrency: { name: "OG", symbol: "OG", decimals: 18 },
+  rpcUrls: { default: { http: ["https://evmrpc.0g.ai"] } },
+} as const;
+
+const account = privateKeyToAccount(process.env.BUYER_KEY as `0x${string}`);
+const pact = new PactClient({
+  publicClient: createPublicClient({ chain, transport: http() }),
+  walletClient: createWalletClient({ account, chain, transport: http() }),
+});
+
+// Escrow funds, watch through settlement, verify the TEE attestation locally.
+const result = await pact.run({
+  serviceId: 1n,
+  prompt: "Audit this Solidity contract for reentrancy vulnerabilities",
+});
+
+console.log(result.verified.ok);                  // true on authentic attestation
+console.log(result.verified.recoveredSigner);     // matches service.signingAddress
+console.log(result.txHashes.createJob);           // chainscan it
+```
+
+Full SDK docs: [`packages/sdk/README.md`](packages/sdk/README.md) · [npmjs.com/package/@trypact/sdk](https://www.npmjs.com/package/@trypact/sdk).
 
 ---
 
