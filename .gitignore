@@ -20,3 +20,5 @@ scripts/day0/output/local/
 **/cache/
 **/out/
 **/broadcast/run-*
+*.tsbuildinfo
+
