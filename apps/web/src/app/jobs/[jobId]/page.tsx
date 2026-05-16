@@ -151,6 +151,7 @@ export default function JobDetailPage({
           registeredSigner={
             (service?.signingAddress ?? SERVICE_1_REGISTERED_SIGNER) as `0x${string}`
           }
+          outputRootHash={job.outputRootHash as Hex}
         />
       ) : null}
 

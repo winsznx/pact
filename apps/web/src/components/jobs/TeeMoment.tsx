@@ -28,6 +28,7 @@ interface TeeMomentProps {
   attestationTextHex: Hex;
   signature: Hex;
   registeredSigner: `0x${string}`;
+  outputRootHash?: Hex;
 }
 
 export function TeeMoment({
@@ -36,6 +37,7 @@ export function TeeMoment({
   attestationTextHex,
   signature,
   registeredSigner,
+  outputRootHash,
 }: TeeMomentProps) {
   const [prompt, setPrompt] = useState<string | null>(null);
   const [output, setOutput] = useState<string | null>(null);
@@ -82,7 +84,7 @@ export function TeeMoment({
             registeredSigner={registeredSigner}
           />
 
-          {/* RIGHT — seller output */}
+          {/* RIGHT — seller output (off-chain delivery; on-chain commitment) */}
           <Card variant="elevated" className="p-32">
             <div className="text-caption uppercase tracking-uppercase text-slate-ink font-mono mb-16">
               Seller&apos;s output
@@ -92,8 +94,29 @@ export function TeeMoment({
                 {output}
               </div>
             ) : (
-              <div className="font-mono text-caption tracking-caption text-slate-ink">
-                Output pending. v0.2 reads ECIES-decrypted output from indexer.
+              <div className="space-y-12">
+                <p className="font-mono text-caption leading-subheading tracking-caption text-slate-ink">
+                  Delivered to the buyer off chain. The protocol settles
+                  cryptographic provenance, not byte distribution.
+                </p>
+                {outputRootHash && outputRootHash !== "0x" ? (
+                  <div>
+                    <div className="text-caption uppercase tracking-uppercase text-slate-ink mb-6 font-mono">
+                      Output root hash (on chain commitment)
+                    </div>
+                    <div className="font-mono text-caption leading-subheading tracking-caption text-midnight-navy bg-data-chip rounded-cardssmall p-12 break-all">
+                      {outputRootHash}
+                    </div>
+                  </div>
+                ) : null}
+                <p className="font-mono text-caption leading-subheading tracking-caption text-slate-ink">
+                  Retrieve the bytes via{" "}
+                  <code className="text-midnight-navy">@trypact/sdk</code>{" "}
+                  <code className="text-midnight-navy">pact.run</code> or the{" "}
+                  <code className="text-midnight-navy">trypact.run</code>{" "}
+                  MCP tool. v0.2 ships output via 0G Storage with ECIES to the
+                  buyer&apos;s wallet.
+                </p>
               </div>
             )}
           </Card>
