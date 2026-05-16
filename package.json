@@ -1,0 +1,19 @@
+{
+  "name": "trypact",
+  "version": "0.0.1",
+  "private": true,
+  "description": "PACT — Provable Agent-to-Agent Compute Trust. Settlement protocol for AI-as-a-Service on 0G mainnet.",
+  "engines": {
+    "node": ">=20.18.0"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "pnpm --filter @pact/web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test:contracts": "pnpm --filter @pact/contracts test"
+  },
+  "dependencies": {
+    "puppeteer": "^24.43.0"
+  }
+}
