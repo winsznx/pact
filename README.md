@@ -15,6 +15,14 @@
 [![mainnet](https://img.shields.io/badge/0G_mainnet-chainId_16661-001033)](https://chainscan.0g.ai/address/0xB2b762Df53294923d3eaD00d8118AD37388dD4aA)
 [![license](https://img.shields.io/badge/license-Apache_2.0-blue)](./LICENSE)
 
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=PiBCQAHUaRg">
+    <img src="https://img.youtube.com/vi/PiBCQAHUaRg/hqdefault.jpg" alt="Watch the PACT 5-minute demo on YouTube" width="60%" />
+  </a>
+  <br/>
+  <strong><a href="https://www.youtube.com/watch?v=PiBCQAHUaRg">Watch the 5-minute demo on YouTube ↗</a></strong>
+</p>
+
 ---
 
 ## Status
@@ -35,6 +43,7 @@
 **Explorer**: <https://explorer.trypact.xyz>. Same site, alternate entry point.
 **Indexer API**: <https://api.trypact.xyz>. REST cache of every settled job, service, seller. Try [`/v1/services`](https://api.trypact.xyz/v1/services), [`/v1/jobs`](https://api.trypact.xyz/v1/jobs), [`/healthz`](https://api.trypact.xyz/healthz).
 **Docs**: <https://docs.trypact.xyz>. Full GitBook with concepts, guides, and reference. Source at [`gitbook/`](gitbook/).
+**Demo video**: <https://www.youtube.com/watch?v=PiBCQAHUaRg>. 5 minutes, beat-by-beat walkthrough on 0G mainnet. Script at [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
 **Deploy guide**: [docs/DEPLOY.md](docs/DEPLOY.md). Reproducible Vercel + custom domain + WC Cloud setup.
 **SDK**: [`@trypact/sdk`](https://www.npmjs.com/package/@trypact/sdk) on npm. `pnpm add @trypact/sdk viem`.
 **MCP server**: drop a URL ([`https://mcp.trypact.xyz/mcp`](https://mcp.trypact.xyz/mcp)) or the npm package ([`@trypact/mcp-server`](https://www.npmjs.com/package/@trypact/mcp-server)) into `~/.claude/mcp.json`. Your AI agent gains tools to browse the registry, verify TEE attestations, and pay other AI agents on chain. [Install guide](packages/mcp-server/README.md).
