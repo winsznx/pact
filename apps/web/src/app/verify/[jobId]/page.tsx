@@ -114,7 +114,15 @@ function VerifyInner({ jobIdRaw }: { jobIdRaw: string }) {
         </div>
       </section>
 
-      {showWaiting ? (
+      {isLoading && !shouldRenderViz ? (
+        <section className="bg-ghost-canvas">
+          <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 pb-72 text-center">
+            <p className="font-mono text-caption tracking-caption text-slate-ink">
+              Loading job #{jobId.toString()} from 0G mainnet…
+            </p>
+          </div>
+        </section>
+      ) : showWaiting ? (
         <section className="bg-ghost-canvas">
           <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 pb-72 text-center">
             <p className="text-body leading-body tracking-body text-storm-gray">
