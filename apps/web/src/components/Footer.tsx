@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PACT_ADDRESSES, PACT_EXPLORER_URL } from "@pact/shared";
 import { Hash } from "@/components/ui/Hash";
 
