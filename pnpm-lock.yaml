@@ -37,6 +37,37 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
 
+  apps/mcp-http:
+    dependencies:
+      '@modelcontextprotocol/sdk':
+        specifier: 1.29.0
+        version: 1.29.0(zod@3.25.76)
+      '@trypact/sdk':
+        specifier: ^0.1.0
+        version: 0.1.0(viem@2.21.45(bufferutil@4.1.0)(typescript@5.6.3)(utf-8-validate@5.0.10)(zod@3.25.76))
+      express:
+        specifier: 4.21.2
+        version: 4.21.2
+      viem:
+        specifier: 2.21.45
+        version: 2.21.45(bufferutil@4.1.0)(typescript@5.6.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+      zod:
+        specifier: 3.25.76
+        version: 3.25.76
+    devDependencies:
+      '@types/express':
+        specifier: 5.0.0
+        version: 5.0.0
+      '@types/node':
+        specifier: 22.10.5
+        version: 22.10.5
+      tsx:
+        specifier: 4.19.2
+        version: 4.19.2
+      typescript:
+        specifier: 5.6.3
+        version: 5.6.3
+
   apps/seller-reference:
     dependencies:
       '@0gfoundation/0g-compute-ts-sdk':

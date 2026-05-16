@@ -1,0 +1,29 @@
+{
+  "name": "@pact/mcp-http",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PACT MCP server over HTTP — hosted at mcp.trypact.xyz so any MCP client can attach via {\"url\":...} without installing an npm package.",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "@trypact/sdk": "^0.1.0",
+    "express": "4.21.2",
+    "viem": "2.21.45",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.0",
+    "@types/node": "22.10.5",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
