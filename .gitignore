@@ -10,3 +10,13 @@ deployments/local/
 foundry/cache/
 foundry/out/
 broadcast/
+
+# Phase 0 sandbox
+scripts/day0/.cache/
+scripts/day0/lib/
+scripts/day0/output/local/
+
+# Foundry artefacts anywhere in the tree
+**/cache/
+**/out/
+**/broadcast/run-*
