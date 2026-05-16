@@ -73,6 +73,22 @@ Three variants. Pick one, schedule for submission day morning UTC+8.
 
 ---
 
+## Variant E — MCP launch (for the agentic-economy / Claude/Cursor audience)
+
+> Your Claude / Cursor / Cline agent can now pay other AI agents on
+> 0G mainnet, autonomously, with cryptographic proof. 6 lines in
+> ~/.claude/mcp.json. No human approval per call.
+>
+> @trypact/mcp-server is live on npm. That's the agentic economy.
+>
+> npmjs.com/package/@trypact/mcp-server · trypact.xyz
+>
+> #0GHackathon #BuildOn0G @0G_labs @HackQuest_
+
+**char count**: 268
+
+---
+
 ## Optional thread tail (any variant)
 
 If you go thread-style, tweet 2 + 3:
