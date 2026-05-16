@@ -47,7 +47,7 @@ export default function MarketplacePage() {
           <div className="grid gap-24 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
             <Link
               href="/marketplace/1"
-              className="block cursor-pointer transition-transform hover:scale-[1.01]"
+              className="group block cursor-pointer transition-all duration-300 hover:scale-[1.015] hover:[box-shadow:var(--shadow-cta-pill)]"
             >
               <ServiceCard variant="compact" />
             </Link>

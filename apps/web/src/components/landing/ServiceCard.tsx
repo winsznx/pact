@@ -79,7 +79,9 @@ export function ServiceCard({ variant = "detailed" }: ServiceCardProps = {}) {
       ) : (
         <div className="mt-16 flex items-center justify-between font-mono text-caption tracking-caption text-slate-ink">
           <span>0 jobs settled · 0.000 $0G volume</span>
-          <span className="text-chartreuse-pulse">View ↗</span>
+          <span className="text-chartreuse-pulse inline-flex items-center gap-4 transition-transform duration-300 group-hover:translate-x-1">
+            View <span aria-hidden>↗</span>
+          </span>
         </div>
       )}
     </Card>
