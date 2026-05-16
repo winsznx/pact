@@ -2,11 +2,13 @@ import { Card } from "@/components/ui/Card";
 import { Hash } from "@/components/ui/Hash";
 
 /**
- * Conceptual preview of the captured G5 attestation payload — the bytes that
- * every settled job produces on chain. CHUNK 5 will hook this up to a real
- * verifier path with browser-side ECDSA recovery; for CHUNK 1 we display the
- * canonical 5-field text and signature shape so the moat is visible from the
- * landing page.
+ * Conceptual preview of a captured G5 attestation payload — the bytes that
+ * every settled job produces on chain.
+ *
+ * Layout: structured 5-field table instead of a single colon-mashed wall.
+ * Each field shows its name (contentHash / usageHash / providerType /
+ * providerIdentity / tlsCertFingerprint) with the corresponding hex
+ * head…tail-elided so the receipt is scannable, not a paragraph of bytes.
  *
  * Captured 2026-05-07 via scripts/day0/g5-direct-broker.ts (live mainnet,
  * provider 0xd9966e13...). See AGENT_PROGRESS for the full provenance.
@@ -17,33 +19,57 @@ const CAPTURED_SIG =
   "0x99946cf42f441ae8756cc899f74054926c8b9d4ae5b570499783da23ae73393a647dc0f9a188159876d1ba52b42bdc0b837ccaaf0ccf79b93449a16b1f9fab831c";
 const CAPTURED_SIGNER = "0x4C1b546f5Fc11A9c2428eaFEd1D951Aa13C17ee8" as const;
 
+const FIELD_LABELS = [
+  "contentHash",
+  "usageHash",
+  "providerType",
+  "providerIdentity",
+  "tlsCertFingerprint",
+] as const;
+
+/** Hex looks like an address/tx — middle-elide. Free-form (e.g. "centralized")
+ *  shows as-is. */
+function elideField(value: string): string {
+  if (/^[0-9a-fA-F]{40,}$/.test(value)) {
+    return `${value.slice(0, 8)}…${value.slice(-6)}`;
+  }
+  return value;
+}
+
 export function AttestationReceipt() {
+  const fields = CAPTURED_TEXT.split(":");
+
   return (
     <Card variant="elevated" className="p-20">
-      <div className="flex items-center gap-8 text-caption text-slate-ink">
+      <div className="flex items-center justify-between gap-8 text-caption text-slate-ink">
         <span className="font-mono">attestation receipt</span>
         <span className="font-mono text-caption text-chartreuse-pulse">
           ATTESTED → SETTLED
         </span>
       </div>
 
-      <div className="mt-12">
-        <div className="text-caption uppercase tracking-uppercase text-slate-ink mb-4">
-          Canonical text (5-field colon-separated)
+      <div className="mt-16">
+        <div className="text-caption uppercase tracking-uppercase text-slate-ink mb-8 font-mono">
+          5-field canonical text
         </div>
-        <div className="font-mono text-caption leading-subheading tracking-caption text-midnight-navy break-all bg-data-chip rounded-cardssmall px-12 py-12">
-          {CAPTURED_TEXT.split(":").map((field, i, arr) => (
-            <span key={i}>
-              {field}
-              {i < arr.length - 1 ? (
-                <span className="text-chartreuse-pulse mx-0.5">:</span>
-              ) : null}
-            </span>
-          ))}
+        <div className="bg-data-chip rounded-cardssmall px-12 py-12">
+          <dl className="grid grid-cols-[auto_1fr] gap-x-12 gap-y-6 font-mono text-caption leading-subheading tracking-caption">
+            {fields.map((value, i) => {
+              const label = FIELD_LABELS[i] ?? `field${i}`;
+              return (
+                <div key={label} className="contents">
+                  <dt className="text-slate-ink">{label}</dt>
+                  <dd className="text-midnight-navy text-right break-all">
+                    {elideField(value)}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
         </div>
       </div>
 
-      <div className="mt-12 grid grid-cols-[auto_1fr] gap-x-16 gap-y-8 text-caption items-center">
+      <div className="mt-16 grid grid-cols-[auto_1fr] gap-x-16 gap-y-8 text-caption items-center">
         <div className="text-slate-ink">recovered signer</div>
         <div className="text-right">
           <Hash value={CAPTURED_SIGNER} kind="address" />

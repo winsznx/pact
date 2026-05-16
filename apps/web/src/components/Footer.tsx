@@ -1,5 +1,4 @@
 import { PACT_ADDRESSES, PACT_EXPLORER_URL } from "@pact/shared";
-import { Hash } from "@/components/ui/Hash";
 
 /**
  * Footer is the brand cosmos band — the only place on the site beyond the
@@ -88,10 +87,10 @@ export function Footer() {
           <div className="grid gap-48 md:grid-cols-2 lg:grid-cols-4">
             {/* Brand summary */}
             <div>
-              <div className="text-caption uppercase tracking-uppercase text-ice-veil/60 font-mono">
+              <div className="text-caption uppercase tracking-uppercase text-ice-veil/70 font-mono">
                 What this is
               </div>
-              <p className="mt-12 text-sm leading-sm tracking-sm text-ice-veil/80">
+              <p className="mt-12 text-sm leading-sm tracking-sm text-ice-veil/90">
                 Settlement protocol for verifiable AI-as-a-Service on{" "}
                 0G mainnet. Buyers pay sellers per inference. TEE attestation
                 + ECDSA recovery guarantee model + execution. Reputation
@@ -101,7 +100,7 @@ export function Footer() {
 
             {/* Contracts */}
             <div>
-              <div className="text-caption uppercase tracking-uppercase text-ice-veil/60 font-mono">
+              <div className="text-caption uppercase tracking-uppercase text-ice-veil/70 font-mono">
                 Mainnet contracts
               </div>
               <ul className="mt-12 space-y-8 text-caption">
@@ -110,8 +109,15 @@ export function Footer() {
                     key={key}
                     className="flex items-center justify-between gap-8"
                   >
-                    <span className="text-ice-veil/70">{label}</span>
-                    <Hash value={PACT_ADDRESSES[key]} kind="address" />
+                    <span className="text-ice-veil/80">{label}</span>
+                    <a
+                      href={`${PACT_EXPLORER_URL}/address/${PACT_ADDRESSES[key]}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-caption text-frost-white/85 hover:text-chartreuse-pulse transition-colors"
+                    >
+                      {shortAddress(PACT_ADDRESSES[key])} ↗
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -119,7 +125,7 @@ export function Footer() {
 
             {/* Resources */}
             <div>
-              <div className="text-caption uppercase tracking-uppercase text-ice-veil/60 font-mono">
+              <div className="text-caption uppercase tracking-uppercase text-ice-veil/70 font-mono">
                 Resources
               </div>
               <ul className="mt-12 space-y-8 text-sm">
@@ -143,7 +149,7 @@ export function Footer() {
 
             {/* Socials */}
             <div>
-              <div className="text-caption uppercase tracking-uppercase text-ice-veil/60 font-mono">
+              <div className="text-caption uppercase tracking-uppercase text-ice-veil/70 font-mono">
                 Socials
               </div>
               <ul className="mt-12 space-y-8 text-sm">
@@ -160,12 +166,12 @@ export function Footer() {
 
         {/* Bottom strip */}
         <div className="border-t border-white/10">
-          <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 py-24 text-caption font-mono tracking-caption text-ice-veil/40 flex items-center justify-between gap-16 flex-wrap">
+          <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 py-24 text-caption font-mono tracking-caption text-ice-veil/55 flex items-center justify-between gap-16 flex-wrap">
             <span>
               chainId 16661 · primary RPC https://evmrpc.0g.ai · explorer{" "}
               {PACT_EXPLORER_URL}
             </span>
-            <span className="text-ice-veil/30">
+            <span className="text-ice-veil/45">
               built solo for 0G APAC Hackathon · 2026
             </span>
           </div>
@@ -188,10 +194,15 @@ function FooterLink({
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="text-ice-veil/85 hover:text-chartreuse-pulse transition-colors duration-300"
+        className="text-ice-veil/90 hover:text-chartreuse-pulse transition-colors duration-300"
       >
         {children}
       </a>
     </li>
   );
+}
+
+function shortAddress(addr: string): string {
+  if (!addr || addr.length < 10) return addr;
+  return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
 }
