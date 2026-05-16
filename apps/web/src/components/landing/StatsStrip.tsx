@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { StatNumber } from "@/components/ui/StatNumber";
 import { usePactStats } from "@/lib/usePactStats";
@@ -48,7 +49,7 @@ export function StatsStrip() {
                 <Skeleton className="h-48 w-32 mx-auto" />
               ) : (
                 <StatNumber size="lg" className="block text-midnight-navy">
-                  {s.value.toString()}
+                  <AnimatedNumber value={s.value} />
                 </StatNumber>
               )}
               <div className="mt-12 font-mono text-caption tracking-uppercase uppercase text-slate-ink">

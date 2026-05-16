@@ -2,6 +2,7 @@
 
 import { formatEther } from "viem";
 
+import { AnimatedNumber } from "@/components/ui/AnimatedNumber";
 import { StatNumber } from "@/components/ui/StatNumber";
 import { usePactStats } from "@/lib/usePactStats";
 import { useProtocolActivity } from "@/lib/useProtocolActivity";
@@ -22,29 +23,58 @@ export function ExploreStatsRow() {
   const activity = useProtocolActivity();
 
   const placeholder = "—";
-  const fmtCount = (n: number | undefined): string =>
-    stats.isLoading || n === undefined ? placeholder : n.toString();
+  const formatOg = (n: number): string => n.toFixed(3);
 
   const totalSettledOg =
     activity.isLoading || activity.data === undefined
-      ? placeholder
-      : formatEther(activity.data.totalSettledWei);
-  const signaturesRecovered =
-    activity.isLoading || activity.data === undefined
-      ? placeholder
-      : activity.data.signaturesRecovered.toString();
+      ? null
+      : Number(formatEther(activity.data.totalSettledWei));
 
-  const rows = [
-    { value: fmtCount(stats.data?.jobsSettled), label: "Jobs settled" },
-    { value: totalSettledOg, label: "Total $0G settled", isMonoValue: true },
-    { value: signaturesRecovered, label: "Signatures recovered on-chain" },
-    { value: fmtCount(stats.data?.bondedSellers), label: "Bonded sellers" },
+  const rows: Array<{
+    key: string;
+    value: number | undefined;
+    placeholderValue?: string;
+    label: string;
+    isMonoValue?: boolean;
+    formatter?: (n: number) => string;
+  }> = [
+    {
+      key: "settled",
+      value:
+        stats.isLoading || stats.data?.jobsSettled === undefined
+          ? undefined
+          : stats.data.jobsSettled,
+      label: "Jobs settled",
+    },
+    {
+      key: "wei",
+      value: totalSettledOg ?? undefined,
+      label: "Total $0G settled",
+      isMonoValue: true,
+      formatter: formatOg,
+    },
+    {
+      key: "sigs",
+      value:
+        activity.isLoading || activity.data === undefined
+          ? undefined
+          : activity.data.signaturesRecovered,
+      label: "Signatures recovered on-chain",
+    },
+    {
+      key: "sellers",
+      value:
+        stats.isLoading || stats.data?.bondedSellers === undefined
+          ? undefined
+          : stats.data.bondedSellers,
+      label: "Bonded sellers",
+    },
   ];
 
   return (
     <div className="grid grid-cols-2 gap-32 lg:grid-cols-4">
       {rows.map((r) => (
-        <div key={r.label} className="text-center">
+        <div key={r.key} className="text-center">
           <StatNumber
             size="md"
             className={
@@ -53,7 +83,11 @@ export function ExploreStatsRow() {
                 : "block text-midnight-navy"
             }
           >
-            {r.value}
+            {r.value === undefined ? (
+              placeholder
+            ) : (
+              <AnimatedNumber value={r.value} formatter={r.formatter} />
+            )}
           </StatNumber>
           <div className="mt-12 font-mono text-caption tracking-uppercase uppercase text-slate-ink">
             {r.label}

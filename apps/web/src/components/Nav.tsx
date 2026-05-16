@@ -227,7 +227,7 @@ function ConnectedPill({
     >
       <span
         aria-hidden
-        className="inline-block w-8 h-8 rounded-buttons bg-chartreuse-pulse"
+        className="inline-block w-8 h-8 rounded-buttons bg-chartreuse-pulse pact-live-pulse"
       />
       <span className="font-mono">{label}</span>
     </button>

@@ -93,7 +93,7 @@ function Node({
 }) {
   const styles =
     status === "active"
-      ? "bg-chartreuse-pulse text-midnight-navy ring-2 ring-chartreuse-pulse/40"
+      ? "bg-chartreuse-pulse text-midnight-navy ring-2 ring-chartreuse-pulse/40 pact-match-pop"
       : status === "past"
         ? "bg-midnight-navy text-frost-white"
         : status === "alt"
@@ -101,7 +101,8 @@ function Node({
           : "bg-ghost-canvas text-slate-ink border border-fog-border/50";
   return (
     <div
-      className={`inline-flex items-center justify-center px-20 py-12 rounded-buttons font-mono text-caption tracking-caption ${styles}`}
+      key={`${label}-${status}`}
+      className={`inline-flex items-center justify-center px-20 py-12 rounded-buttons font-mono text-caption tracking-caption transition-colors duration-500 ease-out ${styles}`}
     >
       {label}
     </div>
@@ -110,7 +111,7 @@ function Node({
 
 function Connector() {
   return (
-    <span aria-hidden className="text-slate-ink font-mono text-caption">
+    <span aria-hidden className="text-slate-ink font-mono text-caption transition-colors duration-500">
       →
     </span>
   );

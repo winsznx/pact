@@ -12,23 +12,24 @@ import { Hash } from "@/components/ui/Hash";
  *   bytes32 digest = MessageHashUtils.toEthSignedMessageHash(attestationText);
  *   address signer = ECDSA.recover(digest, signature);
  *
- * On the client we use viem's `hashMessage({ raw })` (which produces the
- * exact EIP-191 prefixed keccak256 the OZ helper produces) and
- * `recoverMessageAddress({ message: { raw }, signature })` for the recovery.
- * If the recovered address matches the service's registered signing
- * address, the attestation is cryptographically valid.
+ * On the client we use viem's `hashMessage({ raw })` (same EIP-191 prefix
+ * + keccak256 the OZ helper produces) and `recoverMessageAddress`. If the
+ * recovered address matches the service's registered signing address, the
+ * attestation is cryptographically valid.
  *
- * The animation reveals the cryptographic chain step-by-step so a non-
- * technical viewer can follow what's happening: 5-field text → EIP-191
- * wrap → keccak256 hash → ECDSA recovery → comparison.
+ * Each step is enhanced with a microinteraction that makes the math
+ * feel alive rather than fading in as inert text:
+ *   - Step 1: sequential chartreuse pulse along the 5 colon-separated fields
+ *   - Step 3: hash cascade — characters cycle through random hex digits
+ *             before locking, slot-machine-style
+ *   - Step 4: secp256k1 curve renders by drawing its stroke in
+ *   - Step 5: recovered-point drops onto the curve, address pulses chartreuse
+ *   - Step 6: MATCH badge scale-pops in with cubic-bezier overshoot
  *
- * Animation timing is set in STEP_DELAYS_MS — total ~2.5s across 7 steps.
+ * `autoplay` (set via ?autoplay=1 on /verify routes) starts the reveal
+ * on mount — used in the demo screencast.
  *
- * `autoplay` (set via ?autoplay=1 on /verify routes) starts the animation
- * on mount instead of waiting for the user to click the CTA. Useful for
- * recording demo screenshots without manual interaction.
- *
- * All sizing/spacing/color resolves to design tokens.
+ * Timing is dialed via STEP_DELAYS_MS — total ~3.0s across 7 steps.
  */
 
 const FIELD_LABELS = [
@@ -39,8 +40,7 @@ const FIELD_LABELS = [
   "tlsCertFingerprint",
 ];
 
-// ms offset from "verify clicked" for each step transition.
-const STEP_DELAYS_MS = [0, 250, 800, 1200, 1700, 2100, 2500];
+const STEP_DELAYS_MS = [0, 300, 950, 1500, 2200, 2700, 3050];
 
 interface ECDSARecoveryVizProps {
   attestationText: string;
@@ -75,8 +75,6 @@ export function ECDSARecoveryViz({
   const start = useCallback(() => {
     if (step > 0) return;
     setStep(1);
-    // Run the actual recovery in parallel with the animation reveal so
-    // the recovered address is ready by the time step 5 fades it in.
     recoverMessageAddress({
       message: { raw: attestationTextHex },
       signature,
@@ -86,7 +84,6 @@ export function ECDSARecoveryViz({
         const msg = err instanceof Error ? err.message : "recovery failed";
         setRecoverError(msg.slice(0, 200));
       });
-    // Schedule the visual step transitions.
     STEP_DELAYS_MS.slice(1).forEach((ms, i) => {
       window.setTimeout(() => setStep((i + 1) as Step), ms);
     });
@@ -130,8 +127,8 @@ export function ECDSARecoveryViz({
                 key={i}
                 className={
                   step >= 1 && step >= i + 1
-                    ? "text-chartreuse-pulse"
-                    : "text-midnight-navy"
+                    ? "text-chartreuse-pulse transition-colors duration-300"
+                    : "text-midnight-navy transition-colors duration-300"
                 }
               >
                 {f}
@@ -149,7 +146,9 @@ export function ECDSARecoveryViz({
             <span
               key={label}
               className={
-                step >= i + 1 ? "text-chartreuse-pulse" : "text-slate-ink"
+                step >= i + 1
+                  ? "text-chartreuse-pulse transition-colors duration-300"
+                  : "text-slate-ink transition-colors duration-300"
               }
             >
               {label}
@@ -169,14 +168,14 @@ export function ECDSARecoveryViz({
         </div>
       </Reveal>
 
-      {/* Step 3 — keccak256 prefixed digest */}
+      {/* Step 3 — keccak256 prefixed digest with slot-machine cascade */}
       <Reveal active={step >= 3} className="mt-20">
         <StepLabel index={3} step={step}>
           keccak256 of prefixed message
         </StepLabel>
         <div className="mt-8">
           {prefixedHash ? (
-            <Hash value={prefixedHash} kind="tx" head={10} tail={8} />
+            <HashCascade hash={prefixedHash} active={step >= 3} />
           ) : (
             <span className="font-mono text-caption tracking-caption text-slate-ink">
               hash unavailable
@@ -185,17 +184,23 @@ export function ECDSARecoveryViz({
         </div>
       </Reveal>
 
-      {/* Step 4 — ECDSA recovery in flight */}
+      {/* Step 4 — ECDSA recovery, depicted as a curve being drawn */}
       <Reveal active={step >= 4} className="mt-20">
         <StepLabel index={4} step={step}>
           ECDSA secp256k1 recover (signature → address)
         </StepLabel>
-        <div className="mt-8 font-mono text-caption tracking-caption text-slate-ink">
-          recoverMessageAddress(message, signature)
+        <div className="mt-12 rounded-cardssmall bg-data-chip p-16">
+          <Secp256k1Curve
+            curveActive={step >= 4}
+            pointActive={step >= 5 && recovered !== null}
+          />
+          <div className="mt-12 font-mono text-caption tracking-caption text-slate-ink text-center">
+            y² = x³ + 7 &nbsp;·&nbsp; signature → point on the curve → address
+          </div>
         </div>
       </Reveal>
 
-      {/* Step 5 — recovered address fade-in */}
+      {/* Step 5 — recovered address with chartreuse glow flourish */}
       <Reveal active={step >= 5} className="mt-20">
         <StepLabel index={5} step={step}>
           Recovered address
@@ -206,7 +211,12 @@ export function ECDSARecoveryViz({
               {recoverError}
             </span>
           ) : recovered ? (
-            <Hash value={recovered} kind="address" />
+            <span
+              key={recovered}
+              className="inline-block rounded-cardssmall pact-recovered-glow"
+            >
+              <Hash value={recovered} kind="address" />
+            </span>
           ) : (
             <span className="font-mono text-caption tracking-caption text-slate-ink">
               recovering…
@@ -215,7 +225,7 @@ export function ECDSARecoveryViz({
         </div>
       </Reveal>
 
-      {/* Step 6 — comparison + match badge */}
+      {/* Step 6 — comparison + match badge with scale-pop entrance */}
       <Reveal active={step >= 6} className="mt-20">
         <StepLabel index={6} step={step}>
           Comparison vs registered signer
@@ -248,10 +258,11 @@ export function ECDSARecoveryViz({
         {recovered ? (
           <div className="mt-16 flex justify-center">
             <span
+              key={`${matches}-${recovered}`}
               className={
                 matches
-                  ? "inline-flex items-center gap-8 rounded-badges px-16 py-8 bg-chartreuse-pulse text-midnight-navy text-button tracking-button font-medium"
-                  : "inline-flex items-center gap-8 rounded-badges px-16 py-8 bg-pure-surface text-midnight-navy text-button tracking-button font-medium [box-shadow:var(--shadow-md)]"
+                  ? "pact-match-pop inline-flex items-center gap-8 rounded-badges px-16 py-8 bg-chartreuse-pulse text-midnight-navy text-button tracking-button font-medium"
+                  : "pact-match-pop inline-flex items-center gap-8 rounded-badges px-16 py-8 bg-pure-surface text-midnight-navy text-button tracking-button font-medium [box-shadow:var(--shadow-md)]"
               }
             >
               {matches ? "✓ MATCH" : "✗ MISMATCH"}
@@ -267,7 +278,7 @@ export function ECDSARecoveryViz({
         ) : null}
       </Reveal>
 
-      {/* Why this matters — collapsed by default, expandable */}
+      {/* Why this matters — collapsed by default */}
       <div className="mt-32 pt-20 border-t border-fog-border/50">
         <button
           type="button"
@@ -291,6 +302,125 @@ export function ECDSARecoveryViz({
   );
 }
 
+/**
+ * Slot-machine character cascade for a hex hash. Each char cycles through
+ * random hex digits over ~750ms, then locks to its final value at a
+ * staggered offset so the eye reads "computing → done" left-to-right.
+ */
+function HashCascade({ hash, active }: { hash: string; active: boolean }) {
+  const [display, setDisplay] = useState<string>(() => hash);
+  useEffect(() => {
+    if (!active) {
+      setDisplay(hash);
+      return;
+    }
+    const chars = hash.split("");
+    const totalFrames = 45; // ~720ms at 16ms per frame
+    let frame = 0;
+    const hex = "0123456789abcdef";
+    const id = window.setInterval(() => {
+      frame += 1;
+      const ratio = frame / totalFrames;
+      const next = chars.map((c, i) => {
+        // Skip the "0x" prefix — settle it immediately.
+        if (i < 2) return c;
+        // Each char settles at a different t. Staggered left → right.
+        const settleAt = 0.25 + ((i - 2) / Math.max(chars.length - 2, 1)) * 0.65;
+        if (ratio < settleAt) {
+          return hex[Math.floor(Math.random() * 16)] ?? c;
+        }
+        return c;
+      });
+      setDisplay(next.join(""));
+      if (frame >= totalFrames) window.clearInterval(id);
+    }, 16);
+    return () => window.clearInterval(id);
+  }, [hash, active]);
+
+  return (
+    <span className="font-mono text-caption tracking-caption text-chartreuse-pulse bg-data-chip rounded-cardssmall px-12 py-8 inline-block">
+      {display}
+    </span>
+  );
+}
+
+/**
+ * Stylized secp256k1 curve fragment. The real curve over R is one branch
+ * (no closed loop), monotonically rising to the right. Drawn left-to-right
+ * via stroke-dashoffset; the recovered point drops onto its right end
+ * when ECDSA resolves.
+ */
+function Secp256k1Curve({
+  curveActive,
+  pointActive,
+}: {
+  curveActive: boolean;
+  pointActive: boolean;
+}) {
+  // 700px curve length is a heuristic — overshoots the actual path length
+  // so the animation reads as "fully drawn" by the time it completes.
+  return (
+    <svg
+      viewBox="0 0 420 180"
+      className="w-full h-[140px]"
+      role="img"
+      aria-label="secp256k1 curve"
+    >
+      {/* X axis */}
+      <line
+        x1="20"
+        y1="160"
+        x2="400"
+        y2="160"
+        stroke="#d0f100"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+        strokeDasharray="2 4"
+      />
+      {/* Y axis */}
+      <line
+        x1="50"
+        y1="20"
+        x2="50"
+        y2="170"
+        stroke="#d0f100"
+        strokeOpacity="0.12"
+        strokeWidth="1"
+        strokeDasharray="2 4"
+      />
+      {/* The curve itself — quasi-elliptic, rising from low-left to high-right */}
+      <path
+        d="M 60 160 C 110 158 150 148 200 122 S 320 50 400 22"
+        stroke="#d0f100"
+        strokeWidth="2.8"
+        fill="none"
+        strokeLinecap="round"
+        style={
+          curveActive
+            ? {
+                strokeDasharray: 700,
+                strokeDashoffset: 0,
+                transition: "stroke-dashoffset 900ms ease-out",
+              }
+            : {
+                strokeDasharray: 700,
+                strokeDashoffset: 700,
+              }
+        }
+      />
+      {/* Recovered point lands on the curve's high-right tip */}
+      {pointActive ? (
+        <g className="pact-apex-drop" style={{ transformOrigin: "400px 22px" }}>
+          <circle cx="400" cy="22" r="12" fill="#d0f100" opacity="0.32" />
+          <circle cx="400" cy="22" r="6" fill="#d0f100" />
+        </g>
+      ) : null}
+      {/* Origin marker */}
+      <circle cx="50" cy="160" r="2.5" fill="#d0f100" fillOpacity="0.4" />
+    </svg>
+  );
+}
+
 function StepLabel({
   index,
   step,
@@ -305,13 +435,19 @@ function StepLabel({
     <div className="font-mono text-caption tracking-caption">
       <span
         className={
-          reached ? "text-chartreuse-pulse" : "text-slate-ink"
+          reached
+            ? "text-chartreuse-pulse transition-colors duration-300"
+            : "text-slate-ink transition-colors duration-300"
         }
       >
         {index}.
       </span>{" "}
       <span
-        className={reached ? "text-midnight-navy" : "text-slate-ink"}
+        className={
+          reached
+            ? "text-midnight-navy transition-colors duration-300"
+            : "text-slate-ink transition-colors duration-300"
+        }
       >
         {children}
       </span>

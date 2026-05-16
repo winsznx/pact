@@ -57,7 +57,11 @@ export function Hero() {
             look 60% smaller than spec). */}
         <div className="flex justify-center">
           <Badge variant="neutral" className="mb-28">
-            <span className="font-mono tracking-uppercase">
+            <span className="inline-flex items-center gap-8 font-mono tracking-uppercase">
+              <span
+                aria-hidden
+                className="inline-block w-6 h-6 rounded-buttons bg-chartreuse-pulse pact-live-pulse"
+              />
               live · 0G mainnet · 7 contracts deployed
             </span>
           </Badge>

@@ -51,4 +51,58 @@
   .pact-skeleton {
     animation: pact-skeleton-pulse 1.5s ease-in-out infinite;
   }
+
+  /* MATCH badge entrance — overshoot scale-pop for the verify viz climax. */
+  @keyframes pact-match-pop {
+    0%   { transform: scale(0.6); opacity: 0; }
+    55%  { transform: scale(1.1); opacity: 1; }
+    80%  { transform: scale(0.97); }
+    100% { transform: scale(1);   opacity: 1; }
+  }
+  .pact-match-pop {
+    animation: pact-match-pop 620ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  /* Recovered-point glow — slow chartreuse pulse around an element.
+     Used on the recovered address pill once ECDSA recovery resolves. */
+  @keyframes pact-recovered-glow {
+    0%   { box-shadow: 0 0 0   0   rgba(208, 241, 0, 0.55); }
+    50%  { box-shadow: 0 0 18px 6px rgba(208, 241, 0, 0.30); }
+    100% { box-shadow: 0 0 0   0   rgba(208, 241, 0, 0.00); }
+  }
+  .pact-recovered-glow {
+    animation: pact-recovered-glow 1.8s ease-out 1;
+  }
+
+  /* Live indicator pulse — used on green/chartreuse dots that signal
+     "this is fresh data." More pronounced than the skeleton pulse. */
+  @keyframes pact-live-pulse {
+    0%   { transform: scale(1);   box-shadow: 0 0 0  0   rgba(208,241,0,0.7); }
+    70%  { transform: scale(1.4); box-shadow: 0 0 0  10px rgba(208,241,0,0); }
+    100% { transform: scale(1);   box-shadow: 0 0 0  0   rgba(208,241,0,0); }
+  }
+  .pact-live-pulse {
+    animation: pact-live-pulse 1.8s ease-out infinite;
+  }
+
+  /* Curve draw-in — stroke-dashoffset animation for SVG paths. The dash
+     properties must be set inline; this animation removes the offset. */
+  @keyframes pact-stroke-draw {
+    from { stroke-dashoffset: var(--pact-draw-length, 1000); }
+    to   { stroke-dashoffset: 0; }
+  }
+  .pact-stroke-draw {
+    animation: pact-stroke-draw 900ms ease-out 1 both;
+  }
+
+  /* Apex point drop — for the recovered point landing on the curve.
+     Combines a downward translate-in with a small scale overshoot. */
+  @keyframes pact-apex-drop {
+    0%   { transform: translateY(-12px) scale(0.5); opacity: 0; }
+    60%  { transform: translateY(2px)   scale(1.15); opacity: 1; }
+    100% { transform: translateY(0)     scale(1);    opacity: 1; }
+  }
+  .pact-apex-drop {
+    animation: pact-apex-drop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 1 both;
+  }
 }
