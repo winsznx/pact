@@ -22,10 +22,30 @@ export function Footer() {
       <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 py-60">
         <div className="grid gap-56 md:grid-cols-3">
           <div>
-            <div className="text-lead tracking-lead font-medium text-midnight-navy">
-              PACT
+            <div className="flex items-center gap-12">
+              <svg
+                aria-hidden
+                viewBox="0 0 32 32"
+                className="h-36 w-36 flex-shrink-0"
+              >
+                <rect width="32" height="32" rx="7" fill="#001033" />
+                <path
+                  d="M 5 22 Q 16 9 27 22"
+                  stroke="#d0f100"
+                  strokeWidth="2.4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="5" cy="22" r="1.9" fill="#d0f100" />
+                <circle cx="27" cy="22" r="1.9" fill="#d0f100" />
+                <circle cx="16" cy="8.5" r="3.4" fill="#d0f100" />
+              </svg>
+              <div className="text-lead tracking-lead font-medium text-midnight-navy">
+                PACT
+              </div>
             </div>
-            <p className="mt-8 text-sm text-slate-ink leading-sm tracking-sm max-w-xs">
+            <p className="mt-12 text-sm text-slate-ink leading-sm tracking-sm max-w-xs">
               Provable Agent-to-Agent Compute Trust. Settlement protocol for
               AI-as-a-Service on 0G mainnet.
             </p>

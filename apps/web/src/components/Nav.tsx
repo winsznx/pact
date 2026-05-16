@@ -41,8 +41,26 @@ export function Nav() {
       <div className="mx-auto flex h-[var(--height-nav)] w-full max-w-[var(--page-max-width)] items-center justify-between px-24">
         <Link
           href="/"
-          className="flex items-center gap-8 text-frost-white tracking-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse-pulse focus-visible:ring-offset-2 focus-visible:ring-offset-deep-cosmos rounded-buttons px-4"
+          aria-label="PACT — home"
+          className="flex items-center gap-10 text-frost-white tracking-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chartreuse-pulse focus-visible:ring-offset-2 focus-visible:ring-offset-deep-cosmos rounded-buttons px-4"
         >
+          <svg
+            aria-hidden
+            viewBox="0 0 32 32"
+            className="h-28 w-28 flex-shrink-0"
+          >
+            <path
+              d="M 5 22 Q 16 9 27 22"
+              stroke="#d0f100"
+              strokeWidth="2.4"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <circle cx="5" cy="22" r="1.9" fill="#d0f100" />
+            <circle cx="27" cy="22" r="1.9" fill="#d0f100" />
+            <circle cx="16" cy="8.5" r="3.4" fill="#d0f100" />
+          </svg>
           <span className="text-lead font-medium">PACT</span>
           <span className="hidden sm:inline text-caption text-ice-veil/70 font-mono">
             0G mainnet · live
