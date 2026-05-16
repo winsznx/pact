@@ -1,0 +1,4 @@
+.env
+.processed-jobs
+jobs-output/
+node_modules/

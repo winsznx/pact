@@ -1,0 +1,23 @@
+{
+  "name": "@pact/seller-reference",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Seller reference agent — listens for JobCreated on Service 1, runs inference via 0G Compute Direct broker, submits TEE attestation to PactEscrow.",
+  "scripts": {
+    "setup": "tsx src/setup.ts",
+    "run": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "test-e2e": "tsx src/test-e2e.ts"
+  },
+  "dependencies": {
+    "@0gfoundation/0g-compute-ts-sdk": "0.8.0",
+    "@pact/shared": "workspace:*",
+    "ethers": "6.13.4",
+    "viem": "2.21.45",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "5.6.3"
+  }
+}
