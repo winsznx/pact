@@ -33,7 +33,7 @@
 
 **Demo**: <https://trypact.xyz> — Vercel + Singapore edge region (`sin1`) for lowest latency to 0G mainnet RPC. Local: <http://localhost:3001>.
 **Explorer**: <https://explorer.trypact.xyz> — same site, alternate entry point.
-**Indexer API**: <https://indexer-production-9e9b.up.railway.app> (will be `api.trypact.xyz`) — REST cache of every settled job, service, seller. Try `/v1/services`.
+**Indexer API**: <https://api.trypact.xyz> — REST cache of every settled job, service, seller. Try [`/v1/services`](https://api.trypact.xyz/v1/services), [`/v1/jobs`](https://api.trypact.xyz/v1/jobs), [`/healthz`](https://api.trypact.xyz/healthz).
 **Demo video**: *(record in progress — see [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md))*
 **Deploy guide**: [docs/DEPLOY.md](docs/DEPLOY.md) — reproducible Vercel + custom-domain + WC Cloud setup.
 **SDK**: [`@trypact/sdk`](https://www.npmjs.com/package/@trypact/sdk) on npm — `pnpm add @trypact/sdk viem`.
