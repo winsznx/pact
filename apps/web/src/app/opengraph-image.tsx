@@ -110,26 +110,28 @@ export default async function Image() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <div
-              style={{
-                width: "44px",
-                height: "44px",
-                borderRadius: "10px",
-                background: COLOR_DEEP_COSMOS,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+            {/* Recovery Arc mark — Satori inline SVG. No filters (Satori
+                doesn't render feGaussianBlur reliably); the chartreuse
+                strokes on the deep-cosmos plate carry the brand cleanly. */}
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <div
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "50%",
-                  background: COLOR_CHARTREUSE,
-                }}
+              <rect width="32" height="32" rx="7" fill={COLOR_DEEP_COSMOS} />
+              <path
+                d="M 5 22 Q 16 9 27 22"
+                stroke={COLOR_CHARTREUSE}
+                strokeWidth="2.4"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-            </div>
+              <circle cx="5" cy="22" r="1.7" fill={COLOR_CHARTREUSE} />
+              <circle cx="27" cy="22" r="1.7" fill={COLOR_CHARTREUSE} />
+              <circle cx="16" cy="8.5" r="3" fill={COLOR_CHARTREUSE} />
+            </svg>
             <div
               style={{
                 display: "flex",
