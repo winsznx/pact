@@ -1,0 +1,449 @@
+{
+  "gate": "g3-router-inference",
+  "status": "PASS",
+  "summary": "model=z-ai/glm-5-20260211 content=\"PONG\" finish=stop",
+  "startedAt": "2026-05-07T18:38:55.668Z",
+  "finishedAt": "2026-05-07T18:39:02.539Z",
+  "durationMs": 6871,
+  "data": {
+    "preflight": {
+      "url": "https://router-api.0g.ai/v1/models",
+      "status": 200,
+      "body": {
+        "object": "list",
+        "data": [
+          {
+            "id": "deepseek/deepseek-chat-v3-0324",
+            "object": "model",
+            "created": 1777434456,
+            "owned_by": "0G Foundation",
+            "name": "deepseek/deepseek-chat-v3-0324",
+            "description": "DeepSeek-V3.2 is a 671B-parameter mixture-of-experts LLM with hybrid thinking mode, excelling at coding, math, and multi-step reasoning. Supports native function calling and context caching.",
+            "type": "chatbot",
+            "context_length": 131072,
+            "max_completion_tokens": 65536,
+            "architecture": {
+              "modality": "text->text",
+              "input_modalities": [
+                "text"
+              ],
+              "output_modalities": [
+                "text"
+              ],
+              "tokenizer": "deepseek-bpe"
+            },
+            "supported_parameters": [
+              "temperature",
+              "top_p",
+              "max_tokens",
+              "frequency_penalty",
+              "presence_penalty",
+              "seed",
+              "stop",
+              "stream",
+              "tools",
+              "tool_choice",
+              "response_format"
+            ],
+            "default_parameters": {
+              "temperature": 0.7,
+              "top_p": 0.95
+            },
+            "pricing": {
+              "prompt": "910000000000",
+              "completion": "2736000000000"
+            },
+            "verifiability": "TeeTLS",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "openai/whisper-large-v3",
+            "object": "model",
+            "created": 1775815334,
+            "owned_by": "0G Foundation",
+            "name": "openai/whisper-large-v3",
+            "description": "High-performance automatic speech recognition (ASR) model, providing multilingual transcription and translation.",
+            "type": "speech-to-text",
+            "context_length": 448,
+            "max_completion_tokens": 448,
+            "architecture": {
+              "modality": "audio->text",
+              "input_modalities": [
+                "audio"
+              ],
+              "output_modalities": [
+                "text"
+              ]
+            },
+            "supported_parameters": [
+              "file",
+              "model",
+              "language",
+              "response_format"
+            ],
+            "supported_formats": [
+              "openai"
+            ],
+            "default_parameters": {
+              "language": "en",
+              "response_format": "json"
+            },
+            "pricing": {
+              "prompt": "49000000000",
+              "completion": "114000000000"
+            },
+            "verifiability": "TeeML",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "qwen/qwen3-vl-30b-a3b-instruct",
+            "object": "model",
+            "created": 1776252489,
+            "owned_by": "0G Foundation",
+            "name": "qwen/qwen3-vl-30b-a3b-instruct",
+            "description": "Alibaba's Qwen3-VL is a multimodal vision-language model supporting text and image inputs with text output. Strong at visual reasoning, OCR, and chart/document understanding. Served via Alibaba Cloud Model Studio (DashScope, qwen3-vl-flash tier) in the Asia-Pacific (Singapore) region.",
+            "type": "chatbot",
+            "context_length": 262144,
+            "max_completion_tokens": 32768,
+            "architecture": {
+              "modality": "text+image->text",
+              "input_modalities": [
+                "text",
+                "image"
+              ],
+              "output_modalities": [
+                "text"
+              ],
+              "tokenizer": "qwen-bpe"
+            },
+            "supported_parameters": [
+              "temperature",
+              "top_p",
+              "top_k",
+              "max_tokens",
+              "presence_penalty",
+              "seed",
+              "stop",
+              "stream",
+              "tools",
+              "tool_choice",
+              "response_format"
+            ],
+            "default_parameters": {
+              "temperature": 0.7,
+              "top_p": 0.8
+            },
+            "pricing": {
+              "prompt": "400000000000",
+              "completion": "2400000000000"
+            },
+            "verifiability": "TeeTLS",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "qwen3.6-plus",
+            "object": "model",
+            "created": 1776149289,
+            "owned_by": "0G Foundation",
+            "name": "qwen3.6-plus",
+            "description": "Alibaba's Qwen3.6-Plus is a flagship LLM with hybrid linear attention and sparse mixture-of-experts routing, optimized for agentic coding, multi-step workflows, and complex reasoning. Features always-on chain-of-thought reasoning with adaptive depth, native function calling, and supports 119 languages. 1M token context window.",
+            "type": "chatbot",
+            "context_length": 1000000,
+            "max_completion_tokens": 65536,
+            "architecture": {
+              "modality": "text->text",
+              "input_modalities": [
+                "text"
+              ],
+              "output_modalities": [
+                "text"
+              ],
+              "tokenizer": "qwen-bpe"
+            },
+            "supported_parameters": [
+              "temperature",
+              "top_p",
+              "top_k",
+              "max_tokens",
+              "presence_penalty",
+              "repetition_penalty",
+              "seed",
+              "stop",
+              "stream",
+              "tools",
+              "response_format",
+              "preserve_thinking"
+            ],
+            "default_parameters": {
+              "temperature": 0.7,
+              "top_p": 0.8
+            },
+            "pricing": {
+              "prompt": "800000000000",
+              "completion": "4800000000000"
+            },
+            "verifiability": "TeeTLS",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "z-image",
+            "object": "model",
+            "created": 1775815336,
+            "owned_by": "0G Foundation",
+            "name": "z-image",
+            "description": "Async text-to-image model optimized for Base64 encoded outputs.",
+            "type": "text-to-image",
+            "context_length": 2048,
+            "architecture": {
+              "modality": "text->image",
+              "input_modalities": [
+                "text"
+              ],
+              "output_modalities": [
+                "image"
+              ]
+            },
+            "supported_parameters": [
+              "prompt",
+              "n",
+              "size",
+              "response_format"
+            ],
+            "supported_formats": [
+              "openai"
+            ],
+            "default_parameters": {
+              "n": 1,
+              "size": "1024x1024"
+            },
+            "pricing": {
+              "prompt": "0",
+              "completion": "3000000000000000",
+              "image": "3000000000000000"
+            },
+            "verifiability": "TeeML",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "zai-org/GLM-5-FP8",
+            "object": "model",
+            "created": 1777270056,
+            "owned_by": "0G Foundation",
+            "name": "zai-org/GLM-5-FP8",
+            "description": "Z.ai's flagship GLM-5 reasoning model with native tool calling. Thinking/reasoning is enabled by default. To disable, set chat_template_kwargs: {enable_thinking: false} in request body.",
+            "type": "chatbot",
+            "context_length": 202752,
+            "max_completion_tokens": 32768,
+            "architecture": {
+              "modality": "text->text",
+              "input_modalities": [
+                "text"
+              ],
+              "output_modalities": [
+                "text"
+              ],
+              "instruct_type": "chatml",
+              "tokenizer": "Other"
+            },
+            "supported_parameters": [
+              "temperature",
+              "top_p",
+              "top_k",
+              "max_tokens",
+              "frequency_penalty",
+              "presence_penalty",
+              "stop",
+              "tools",
+              "tool_choice",
+              "response_format",
+              "chat_template_kwargs"
+            ],
+            "supported_formats": [
+              "openai",
+              "anthropic"
+            ],
+            "default_parameters": {
+              "temperature": 0.7,
+              "top_p": 0.9
+            },
+            "pricing": {
+              "prompt": "720000000000",
+              "completion": "4200000000000"
+            },
+            "verifiability": "TeeTLS",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          },
+          {
+            "id": "zai-org/GLM-5.1-FP8",
+            "object": "model",
+            "created": 1777444740,
+            "owned_by": "0G Foundation",
+            "name": "zai-org/GLM-5.1-FP8",
+            "description": "GLM-5.1 reasoning model with FP8 quantization, supports tool calling. Thinking/reasoning is enabled by default. To disable, set chat_template_kwargs: {enable_thinking: false} in request body.",
+            "type": "chatbot",
+            "context_length": 131072,
+            "max_completion_tokens": 32768,
+            "architecture": {
+              "modality": "text->text",
+              "input_modalities": [
+                "text"
+              ],
+              "output_modalities": [
+                "text"
+              ],
+              "instruct_type": "chatml",
+              "tokenizer": "glm4"
+            },
+            "supported_parameters": [
+              "temperature",
+              "top_p",
+              "top_k",
+              "max_tokens",
+              "frequency_penalty",
+              "presence_penalty",
+              "stop",
+              "tools",
+              "tool_choice",
+              "response_format",
+              "chat_template_kwargs"
+            ],
+            "supported_formats": [
+              "openai",
+              "anthropic"
+            ],
+            "default_parameters": {
+              "temperature": 0.7,
+              "top_p": 0.9
+            },
+            "pricing": {
+              "prompt": "934000000000",
+              "completion": "7800000000000"
+            },
+            "verifiability": "TeeML",
+            "tee_attested": true,
+            "tee_type": "TDX",
+            "tee_verifier": "dstack",
+            "provider_count": 1
+          }
+        ]
+      }
+    },
+    "request": {
+      "baseURL": "https://router-api.0g.ai/v1",
+      "model": "zai-org/GLM-5-FP8",
+      "prompt": "Reply with a single word: PONG. No punctuation, no extra tokens.",
+      "requestedAt": "2026-05-07T18:38:56.296Z"
+    },
+    "response": {
+      "respondedAt": "2026-05-07T18:39:02.539Z",
+      "id": "gen-1778179139-v8GLtsscdqHUEt06ENcC",
+      "model": "z-ai/glm-5-20260211",
+      "created": 1778179139,
+      "usage": {
+        "completion_tokens": 53,
+        "completion_tokens_details": {
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "reasoning_tokens": 48
+        },
+        "cost": 0.0001906,
+        "cost_details": {
+          "upstream_inference_completions_cost": 0.0001696,
+          "upstream_inference_cost": 0.0001906,
+          "upstream_inference_prompt_cost": 0.000021
+        },
+        "is_byok": false,
+        "prompt_tokens": 21,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "video_tokens": 0
+        },
+        "total_tokens": 74
+      },
+      "finishReason": "stop",
+      "content": "PONG",
+      "rawCompletion": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "PONG",
+              "reasoning": "The user wants me to reply with a single word: \"PONG\".\nThey specified:\n1.  Single word.\n2.  No punctuation.\n3.  No extra tokens.\n\nSo, the output should just be the word PONG.",
+              "reasoning_details": [
+                {
+                  "format": "unknown",
+                  "index": 0,
+                  "text": "The user wants me to reply with a single word: \"PONG\".\nThey specified:\n1.  Single word.\n2.  No punctuation.\n3.  No extra tokens.\n\nSo, the output should just be the word PONG.",
+                  "type": "reasoning.text"
+                }
+              ],
+              "refusal": null,
+              "role": "assistant"
+            },
+            "native_finish_reason": "stop"
+          }
+        ],
+        "created": 1778179139,
+        "id": "gen-1778179139-v8GLtsscdqHUEt06ENcC",
+        "model": "z-ai/glm-5-20260211",
+        "object": "chat.completion",
+        "provider": "Together",
+        "system_fingerprint": null,
+        "usage": {
+          "completion_tokens": 53,
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "image_tokens": 0,
+            "reasoning_tokens": 48
+          },
+          "cost": 0.0001906,
+          "cost_details": {
+            "upstream_inference_completions_cost": 0.0001696,
+            "upstream_inference_cost": 0.0001906,
+            "upstream_inference_prompt_cost": 0.000021
+          },
+          "is_byok": false,
+          "prompt_tokens": 21,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "video_tokens": 0
+          },
+          "total_tokens": 74
+        },
+        "x_0g_trace": {
+          "billing": {
+            "input_cost": "15120000000000",
+            "output_cost": "222600000000000",
+            "total_cost": "237720000000000"
+          },
+          "provider": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+          "request_id": "fa9e3729-40f9-40f0-b13b-2e88a00f9990"
+        }
+      }
+    }
+  }
+}

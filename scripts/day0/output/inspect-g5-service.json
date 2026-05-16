@@ -1,0 +1,20 @@
+{
+  "capturedAt": "2026-05-07T19:25:54.641Z",
+  "target": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+  "walletAddress": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+  "servicesCount": 8,
+  "matchIndex": 0,
+  "fields": {
+    "0": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+    "1": "chatbot",
+    "2": "https://compute-network-1.integratenetwork.work",
+    "3": "720000000000",
+    "4": "4200000000000",
+    "5": "1777433153",
+    "6": "zai-org/GLM-5-FP8",
+    "7": "TeeML",
+    "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"openrouter\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+    "9": "0x4C1b546f5Fc11A9c2428eaFEd1D951Aa13C17ee8",
+    "10": true
+  }
+}

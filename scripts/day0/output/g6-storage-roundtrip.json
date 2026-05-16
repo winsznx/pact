@@ -1,0 +1,22 @@
+{
+  "gate": "g6-storage-roundtrip",
+  "status": "PASS",
+  "summary": "roundtrip OK rootHash=0x31f1dbc6bcfcc56d0a9cecb9edcc1299c865536985a8ef653e09ffc34530779d txSeq=96220 (1024B up=16377ms down=3986ms)",
+  "startedAt": "2026-05-07T18:39:03.349Z",
+  "finishedAt": "2026-05-07T18:39:25.850Z",
+  "durationMs": 22501,
+  "data": {
+    "wallet": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+    "balanceWei": "3459869023994468292",
+    "payloadBytes": 1024,
+    "expectedRoot": "0x31f1dbc6bcfcc56d0a9cecb9edcc1299c865536985a8ef653e09ffc34530779d",
+    "rootHash": "0x31f1dbc6bcfcc56d0a9cecb9edcc1299c865536985a8ef653e09ffc34530779d",
+    "txHash": "0xa74247742eaee6acc74931a1100ae81db6efa3e2b1708bfc1960a8825fd605e8",
+    "txSeq": 96220,
+    "timing": {
+      "uploadMs": 16377,
+      "downloadMs": 3986
+    },
+    "bytesMatch": true
+  }
+}

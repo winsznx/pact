@@ -1,0 +1,335 @@
+{
+  "gate": "g8-direct-broker-teeml",
+  "status": "FAIL",
+  "summary": "getRequestHeaders failed (likely sub-account funding) — provider=0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D model=zai-org/GLM-5.1-FP8: Sub-account not found. Initialize it by transferring funds via \"transfer-fund\" (Address: 0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31, Address: 0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D)",
+  "startedAt": "2026-05-07T19:16:56.629Z",
+  "finishedAt": "2026-05-07T19:17:08.089Z",
+  "durationMs": 11460,
+  "data": {
+    "target": {
+      "model": "zai-org/GLM-5.1-FP8",
+      "needle": "GLM-5.1"
+    },
+    "wallet": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+    "ledgerInfo": {
+      "array": true,
+      "length": 4,
+      "sample": [
+        "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+        "0",
+        "3000000000000000000"
+      ]
+    },
+    "servicesCount": 8,
+    "servicesAll": [
+      {
+        "0": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+        "1": "chatbot",
+        "2": "https://compute-network-1.integratenetwork.work",
+        "3": "720000000000",
+        "4": "4200000000000",
+        "5": "1777433153",
+        "6": "zai-org/GLM-5-FP8",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"openrouter\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+        "9": "0x4C1b546f5Fc11A9c2428eaFEd1D951Aa13C17ee8",
+        "10": true
+      },
+      {
+        "0": "0x36aCffCEa3CCe07cAdd1740Ad992dB16Ab324517",
+        "1": "speech-to-text",
+        "2": "https://compute-network-16.integratenetwork.work",
+        "3": "49000000000",
+        "4": "114000000000",
+        "5": "1774794448",
+        "6": "openai/whisper-large-v3",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+        "9": "0x592056E413aB456646a50441e52D5BA89527877D",
+        "10": true
+      },
+      {
+        "0": "0x992e6396157Dc4f22E74F2231235D7DE62696db5",
+        "1": "chatbot",
+        "2": "https://compute-network-18.integratenetwork.work",
+        "3": "800000000000",
+        "4": "4800000000000",
+        "5": "1777433984",
+        "6": "qwen3.6-plus",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.8\",\"cacheTokenBilling\":{\"divisor\":5},\"tieredPricing\":{\"tiers\":[{\"inputMultiplier\":1,\"maxInputTokens\":256000,\"outputMultiplier\":1},{\"inputMultiplier\":4,\"maxInputTokens\":0,\"outputMultiplier\":2}]}}",
+        "9": "0xd45b4301940B297F76d6e622c1CeA2AE660617d4",
+        "10": true
+      },
+      {
+        "0": "0x4415ef5CBb415347bb18493af7cE01f225Fc0868",
+        "1": "chatbot",
+        "2": "https://compute-network-3.integratenetwork.work",
+        "3": "400000000000",
+        "4": "2400000000000",
+        "5": "1777433687",
+        "6": "qwen/qwen3-vl-30b-a3b-instruct",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.8\",\"cacheTokenBilling\":{\"divisor\":5},\"tieredPricing\":{\"tiers\":[{\"inputMultiplier\":1,\"maxInputTokens\":256000,\"outputMultiplier\":1},{\"inputMultiplier\":4,\"maxInputTokens\":0,\"outputMultiplier\":3}]}}",
+        "9": "0x03716ddFbA77600C33b605FABD2F70Fe89856b0d",
+        "10": true
+      },
+      {
+        "0": "0x1B3AAef3ae5050EEE04ea38cD4B087472BD85EB0",
+        "1": "chatbot",
+        "2": "https://compute-network-4.integratenetwork.work",
+        "3": "910000000000",
+        "4": "2736000000000",
+        "5": "1777434347",
+        "6": "deepseek/deepseek-chat-v3-0324",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+        "9": "0x2E79315804e7C8712afcEbF0E31F08174409D806",
+        "10": true
+      },
+      {
+        "0": "0xE29a72c7629815Eb480aE5b1F2dfA06f06cdF974",
+        "1": "text-to-image",
+        "2": "https://compute-network-15.integratenetwork.work",
+        "3": "0",
+        "4": "3000000000000000",
+        "5": "1774792662",
+        "6": "z-image",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+        "9": "0x592056E413aB456646a50441e52D5BA89527877D",
+        "10": true
+      },
+      {
+        "0": "0x25F8f01cA76060ea40895472b1b79f76613Ca497",
+        "1": "chatbot",
+        "2": "https://5259ae0f38365b27c0bab6301b73691206e32dce-80.dstack-pha-prod5.phala.network",
+        "3": "1600000000000",
+        "4": "9000000000000",
+        "5": "1775715696",
+        "6": "openai/gpt-5.4-mini",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"ghcr.io/0gfoundation/0g-serving-broker@sha256:6c0cea3093b8cfa27a15002351b7d819dc2f648ef9f3be0c5d2a2e1f7582c818\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+        "9": "0x841e738c6D34897FC7F176d3c513151496BFf22d",
+        "10": true
+      },
+      {
+        "0": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+        "1": "chatbot",
+        "2": "https://compute-network-19.integratenetwork.work",
+        "3": "934000000000",
+        "4": "7800000000000",
+        "5": "1777444543",
+        "6": "zai-org/GLM-5.1-FP8",
+        "7": "TeeML",
+        "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+        "9": "0xA46EA4FC5889AD35A1487e1Ed04dCcfa872146B9",
+        "10": true
+      }
+    ],
+    "pickedService": {
+      "0": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+      "1": "chatbot",
+      "2": "https://compute-network-19.integratenetwork.work",
+      "3": "934000000000",
+      "4": "7800000000000",
+      "5": "1777444543",
+      "6": "zai-org/GLM-5.1-FP8",
+      "7": "TeeML",
+      "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+      "9": "0xA46EA4FC5889AD35A1487e1Ed04dCcfa872146B9",
+      "10": true
+    },
+    "providerAddress": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+    "endpoint": "https://compute-network-19.integratenetwork.work/v1/proxy",
+    "model": "zai-org/GLM-5.1-FP8",
+    "unblock": {
+      "reason": "Phase 1.5 needs a fresh per-provider sub-account; ledger short on available balance.",
+      "actions": [
+        "broker.ledger.depositFund(2)  // adds 2 $0G to ledger available balance",
+        "0g-compute-cli deposit --amount 2"
+      ]
+    },
+    "log": [
+      {
+        "step": "wallet ready",
+        "ok": true,
+        "detail": {
+          "address": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+          "balanceWei": "3458637313057733165",
+          "balanceOg": "3.458637313057733165"
+        }
+      },
+      {
+        "step": "createZGComputeNetworkBroker(wallet)",
+        "ok": true
+      },
+      {
+        "step": "ledger.getLedger()",
+        "ok": true,
+        "detail": {
+          "array": true,
+          "length": 4,
+          "sample": [
+            "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+            "0",
+            "3000000000000000000"
+          ]
+        }
+      },
+      {
+        "step": "inference.listService() — full shape dump",
+        "ok": true,
+        "detail": {
+          "count": 8,
+          "services": [
+            {
+              "0": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+              "1": "chatbot",
+              "2": "https://compute-network-1.integratenetwork.work",
+              "3": "720000000000",
+              "4": "4200000000000",
+              "5": "1777433153",
+              "6": "zai-org/GLM-5-FP8",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"openrouter\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+              "9": "0x4C1b546f5Fc11A9c2428eaFEd1D951Aa13C17ee8",
+              "10": true
+            },
+            {
+              "0": "0x36aCffCEa3CCe07cAdd1740Ad992dB16Ab324517",
+              "1": "speech-to-text",
+              "2": "https://compute-network-16.integratenetwork.work",
+              "3": "49000000000",
+              "4": "114000000000",
+              "5": "1774794448",
+              "6": "openai/whisper-large-v3",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+              "9": "0x592056E413aB456646a50441e52D5BA89527877D",
+              "10": true
+            },
+            {
+              "0": "0x992e6396157Dc4f22E74F2231235D7DE62696db5",
+              "1": "chatbot",
+              "2": "https://compute-network-18.integratenetwork.work",
+              "3": "800000000000",
+              "4": "4800000000000",
+              "5": "1777433984",
+              "6": "qwen3.6-plus",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.8\",\"cacheTokenBilling\":{\"divisor\":5},\"tieredPricing\":{\"tiers\":[{\"inputMultiplier\":1,\"maxInputTokens\":256000,\"outputMultiplier\":1},{\"inputMultiplier\":4,\"maxInputTokens\":0,\"outputMultiplier\":2}]}}",
+              "9": "0xd45b4301940B297F76d6e622c1CeA2AE660617d4",
+              "10": true
+            },
+            {
+              "0": "0x4415ef5CBb415347bb18493af7cE01f225Fc0868",
+              "1": "chatbot",
+              "2": "https://compute-network-3.integratenetwork.work",
+              "3": "400000000000",
+              "4": "2400000000000",
+              "5": "1777433687",
+              "6": "qwen/qwen3-vl-30b-a3b-instruct",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.8\",\"cacheTokenBilling\":{\"divisor\":5},\"tieredPricing\":{\"tiers\":[{\"inputMultiplier\":1,\"maxInputTokens\":256000,\"outputMultiplier\":1},{\"inputMultiplier\":4,\"maxInputTokens\":0,\"outputMultiplier\":3}]}}",
+              "9": "0x03716ddFbA77600C33b605FABD2F70Fe89856b0d",
+              "10": true
+            },
+            {
+              "0": "0x1B3AAef3ae5050EEE04ea38cD4B087472BD85EB0",
+              "1": "chatbot",
+              "2": "https://compute-network-4.integratenetwork.work",
+              "3": "910000000000",
+              "4": "2736000000000",
+              "5": "1777434347",
+              "6": "deepseek/deepseek-chat-v3-0324",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"ProviderIdentity\":\"aliyun\",\"ProviderType\":\"centralized\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":true,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+              "9": "0x2E79315804e7C8712afcEbF0E31F08174409D806",
+              "10": true
+            },
+            {
+              "0": "0xE29a72c7629815Eb480aE5b1F2dfA06f06cdF974",
+              "1": "text-to-image",
+              "2": "https://compute-network-15.integratenetwork.work",
+              "3": "0",
+              "4": "3000000000000000",
+              "5": "1774792662",
+              "6": "z-image",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+              "9": "0x592056E413aB456646a50441e52D5BA89527877D",
+              "10": true
+            },
+            {
+              "0": "0x25F8f01cA76060ea40895472b1b79f76613Ca497",
+              "1": "chatbot",
+              "2": "https://5259ae0f38365b27c0bab6301b73691206e32dce-80.dstack-pha-prod5.phala.network",
+              "3": "1600000000000",
+              "4": "9000000000000",
+              "5": "1775715696",
+              "6": "openai/gpt-5.4-mini",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"ghcr.io/0gfoundation/0g-serving-broker@sha256:6c0cea3093b8cfa27a15002351b7d819dc2f648ef9f3be0c5d2a2e1f7582c818\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\"}",
+              "9": "0x841e738c6D34897FC7F176d3c513151496BFf22d",
+              "10": true
+            },
+            {
+              "0": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+              "1": "chatbot",
+              "2": "https://compute-network-19.integratenetwork.work",
+              "3": "934000000000",
+              "4": "7800000000000",
+              "5": "1777444543",
+              "6": "zai-org/GLM-5.1-FP8",
+              "7": "TeeML",
+              "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+              "9": "0xA46EA4FC5889AD35A1487e1Ed04dCcfa872146B9",
+              "10": true
+            }
+          ]
+        }
+      },
+      {
+        "step": "selected TeeML provider",
+        "ok": true,
+        "detail": {
+          "index": 7,
+          "providerAddress": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+          "fullDump": {
+            "0": "0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D",
+            "1": "chatbot",
+            "2": "https://compute-network-19.integratenetwork.work",
+            "3": "934000000000",
+            "4": "7800000000000",
+            "5": "1777444543",
+            "6": "zai-org/GLM-5.1-FP8",
+            "7": "TeeML",
+            "8": "{\"ImageDigest\":\"\",\"ImageName\":\"\",\"TEEVerifier\":\"dstack\",\"TargetSeparated\":false,\"TargetTeeAddress\":\"\",\"VerifierURL\":\"https://github.com/Dstack-TEE/dstack/releases/tag/verifier-v0.5.4\",\"cacheTokenBilling\":{\"divisor\":5}}",
+            "9": "0xA46EA4FC5889AD35A1487e1Ed04dCcfa872146B9",
+            "10": true
+          }
+        }
+      },
+      {
+        "step": "acknowledgeProviderSigner(0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D)",
+        "ok": false,
+        "error": "Error: InsufficientAvailableBalance (Arg0: 0, Arg1: 1000000000000000000)",
+        "detail": "may be benign if already acknowledged"
+      },
+      {
+        "step": "getServiceMetadata",
+        "ok": true,
+        "detail": {
+          "endpoint": "https://compute-network-19.integratenetwork.work/v1/proxy",
+          "model": "zai-org/GLM-5.1-FP8"
+        }
+      },
+      {
+        "step": "getRequestHeaders",
+        "ok": false,
+        "error": "Sub-account not found. Initialize it by transferring funds via \"transfer-fund\" (Address: 0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31, Address: 0x7DCFe6AEa70350C2090041524c9B4A9262DCe87D)"
+      }
+    ]
+  }
+}

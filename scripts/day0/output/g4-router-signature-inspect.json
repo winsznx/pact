@@ -1,0 +1,159 @@
+{
+  "gate": "g4-router-signature-inspect",
+  "status": "PASS",
+  "summary": "no signature/attestation fields found in body or headers — Router path likely unviable, plan to use Direct (G5)",
+  "startedAt": "2026-05-07T18:35:53.414Z",
+  "finishedAt": "2026-05-07T18:35:57.691Z",
+  "durationMs": 4277,
+  "data": {
+    "request": {
+      "url": "https://router-api.0g.ai/v1/chat/completions",
+      "model": "zai-org/GLM-5-FP8",
+      "prompt": "Reply with a single word: PONG. No punctuation, no extra tokens.",
+      "requestedAt": "2026-05-07T18:35:53.415Z"
+    },
+    "response": {
+      "respondedAt": "2026-05-07T18:35:57.687Z",
+      "httpStatus": 200,
+      "httpOk": true,
+      "headers": {
+        "content-length": "1220",
+        "content-type": "application/json",
+        "date": "Thu, 07 May 2026 18:35:57 GMT",
+        "server": "Google Frontend",
+        "x-accel-buffering": "no",
+        "x-cloud-trace-context": "8b7be929b4b8d25cd62e633172c50e1f",
+        "x-provider": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+        "x-ratelimit-limit-day": "50",
+        "x-ratelimit-limit-requests": "10",
+        "x-ratelimit-remaining-day": "48",
+        "x-ratelimit-remaining-requests": "8",
+        "x-ratelimit-reset-requests": "2026-05-07T18:36:00Z",
+        "x-request-id": "23ec7dcf-621c-45e1-9bf2-6b0dc680b678",
+        "zg-res-key": "35c673a2-81ea-434f-96cc-6b32842e8cb2"
+      },
+      "bodyParseError": null,
+      "body": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": null,
+              "reasoning": "The user wants me to reply with a single word: \"PONG\".\nThey",
+              "reasoning_details": [
+                {
+                  "format": "unknown",
+                  "index": 0,
+                  "text": "The user wants me to reply with a single word: \"PONG\".\nThey",
+                  "type": "reasoning.text"
+                }
+              ],
+              "refusal": null,
+              "role": "assistant"
+            },
+            "native_finish_reason": "length"
+          }
+        ],
+        "created": 1778178954,
+        "id": "gen-1778178954-enIDjhLr4n561xJtBLRr",
+        "model": "z-ai/glm-5-20260211",
+        "object": "chat.completion",
+        "provider": "StreamLake",
+        "system_fingerprint": null,
+        "usage": {
+          "completion_tokens": 16,
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "image_tokens": 0,
+            "reasoning_tokens": 15
+          },
+          "cost": 0.00004693,
+          "cost_details": {
+            "upstream_inference_completions_cost": 0.00003328,
+            "upstream_inference_cost": 0.00004693,
+            "upstream_inference_prompt_cost": 0.00001365
+          },
+          "is_byok": false,
+          "prompt_tokens": 21,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "video_tokens": 0
+          },
+          "total_tokens": 37
+        },
+        "x_0g_trace": {
+          "billing": {
+            "input_cost": "15120000000000",
+            "output_cost": "67200000000000",
+            "total_cost": "82320000000000"
+          },
+          "provider": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+          "request_id": "23ec7dcf-621c-45e1-9bf2-6b0dc680b678"
+        }
+      }
+    },
+    "analysis": {
+      "signaturePresent": false,
+      "hits": [],
+      "searchedHeaderHints": [
+        "signature",
+        "tee-signature",
+        "teesignature",
+        "attestation",
+        "attestation-report",
+        "attestationreport",
+        "proof",
+        "tee",
+        "enclave",
+        "model-hash",
+        "modelhash",
+        "provider-id",
+        "providerid",
+        "provider-address",
+        "provideraddress",
+        "nonce",
+        "quote",
+        "ra-quote",
+        "raquote",
+        "remote-attestation",
+        "remoteattestation",
+        "x-tee-signature",
+        "x-attestation",
+        "x-attestation-signature",
+        "x-provider-id",
+        "x-provider-signature",
+        "x-0g-attestation",
+        "x-0g-signature",
+        "x-model-hash",
+        "x-nonce"
+      ],
+      "searchedBodyFieldHints": [
+        "signature",
+        "tee_signature",
+        "teeSignature",
+        "attestation",
+        "attestation_report",
+        "attestationReport",
+        "proof",
+        "tee",
+        "enclave",
+        "model_hash",
+        "modelHash",
+        "provider_id",
+        "providerId",
+        "provider_address",
+        "providerAddress",
+        "nonce",
+        "quote",
+        "ra_quote",
+        "raQuote",
+        "remote_attestation",
+        "remoteAttestation"
+      ]
+    }
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "gate": "g5-direct-broker",
+  "status": "PASS",
+  "summary": "direct broker inference verified; provider=0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C model=zai-org/GLM-5-FP8 sdk=true rawSig=true",
+  "startedAt": "2026-05-07T18:26:12.334Z",
+  "finishedAt": "2026-05-07T18:26:46.094Z",
+  "durationMs": 33760,
+  "data": {
+    "wallet": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+    "ledgerCreated": false,
+    "ledgerInfo": {
+      "array": true,
+      "length": 4,
+      "sample": [
+        "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+        "1000000000000000000",
+        "3000000000000000000"
+      ]
+    },
+    "providerAddress": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+    "endpoint": "https://compute-network-1.integratenetwork.work/v1/proxy",
+    "model": "zai-org/GLM-5-FP8",
+    "service": {
+      "array": true,
+      "length": 11,
+      "sample": [
+        "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+        "chatbot",
+        "https://compute-network-1.integratenetwork.work"
+      ]
+    },
+    "authHeaders": {
+      "Authorization": "Bearer app-sk-eyJhZGRyZXNzIjoiMHhiRjdFRjkwMEUyZEIzNjU0NTVCOTFGYjEzM2Y3OEZjNzAxMTRCZjMxIiwicHJvdmlkZXIiOiIweGQ5OTY2ZTEzYTYwMjZGY2NhNGIxM0U3ZmY5NWM5NERFMjY4QzQ3MUMiLCJ0aW1lc3RhbXAiOjE3NzgxNzgzNzgwODUsImV4cGlyZXNBdCI6MTc3ODI2NDc3ODA4NSwibm9uY2UiOiIxNzc4MTc4Mzc4MDg1LWJzZnBhbzMzbTluMDAwMDAwMCIsImdlbmVyYXRpb24iOjAsInRva2VuSWQiOjI1NX18MHgyOTdmMWI2YTVhN2FkZWYyM2Y4OGU2MThlY2YwMzNkMWFlZWY3MTg5YTFmNTZiNGIxMGU4NDlmZWVmMWYyMWY1NWFmYmE4YzdjODQ4NTk3YTg3NzlmZWM0NDBlNzc4MmI0MzhmNjZkOGYzZWRhMjc1NTIyMGYyNDM0OWM3NWU5NTFi"
+    },
+    "inference": {
+      "requestedAt": "2026-05-07T18:26:36.475Z",
+      "respondedAt": "2026-05-07T18:26:44.408Z",
+      "httpStatus": 200,
+      "httpStatusText": "OK",
+      "httpOk": true,
+      "requestUrl": "https://compute-network-1.integratenetwork.work/v1/proxy/chat/completions",
+      "requestHeaders": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer app-sk-eyJhZGRyZXNzIjoiMHhiRjdFRjkwMEUyZEIzNjU0NTVCOTFGYjEzM2Y3OEZjNzAxMTRCZjMxIiwicHJvdmlkZXIiOiIweGQ5OTY2ZTEzYTYwMjZGY2NhNGIxM0U3ZmY5NWM5NERFMjY4QzQ3MUMiLCJ0aW1lc3RhbXAiOjE3NzgxNzgzNzgwODUsImV4cGlyZXNBdCI6MTc3ODI2NDc3ODA4NSwibm9uY2UiOiIxNzc4MTc4Mzc4MDg1LWJzZnBhbzMzbTluMDAwMDAwMCIsImdlbmVyYXRpb24iOjAsInRva2VuSWQiOjI1NX18MHgyOTdmMWI2YTVhN2FkZWYyM2Y4OGU2MThlY2YwMzNkMWFlZWY3MTg5YTFmNTZiNGIxMGU4NDlmZWVmMWYyMWY1NWFmYmE4YzdjODQ4NTk3YTg3NzlmZWM0NDBlNzc4MmI0MzhmNjZkOGYzZWRhMjc1NTIyMGYyNDM0OWM3NWU5NTFi"
+      },
+      "responseHeaders": {
+        "access-control-allow-origin": "*",
+        "access-control-expose-headers": "X-Generation-Id,cf-ray,Provider,content-encoding,ZG-Res-Key",
+        "cf-ray": "9f82462a9e557b3d-DEL",
+        "connection": "keep-alive",
+        "content-encoding": "gzip",
+        "content-length": "868",
+        "content-type": "application/json",
+        "date": "Thu, 07 May 2026 18:26:44 GMT",
+        "permissions-policy": "payment=(self \"https://checkout.stripe.com\" \"https://connect-js.stripe.com\" \"https://js.stripe.com\" \"https://*.js.stripe.com\" \"https://hooks.stripe.com\")",
+        "provider": "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+        "referrer-policy": "no-referrer, strict-origin-when-cross-origin",
+        "server": "nginx/1.27.4",
+        "x-content-type-options": "nosniff",
+        "x-generation-id": "gen-1778178398-i9woniL9mr9atmZA0B4i",
+        "x-ratelimit-limit-requests": "120",
+        "x-ratelimit-limit-tokens": "300000",
+        "x-ratelimit-remaining-requests": "19",
+        "x-ratelimit-remaining-tokens": "300000",
+        "x-ratelimit-reset-requests": "0s",
+        "x-ratelimit-reset-tokens": "0s",
+        "zg-res-key": "692733de-fe24-4cd6-b81b-79a94b94433e"
+      },
+      "responseRawText": "\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1778178398-i9woniL9mr9atmZA0B4i\",\"object\":\"chat.completion\",\"created\":1778178398,\"model\":\"z-ai/glm-5-20260211\",\"provider\":\"StreamLake\",\"system_fingerprint\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"PONG\",\"refusal\":null,\"reasoning\":\"The user wants a single word response: \\\"PONG\\\".\\nThere should be no punctuation and no extra tokens.\\n\\nConstraint Checklist & Confidence Score:\\n1. Reply with a single word? Yes.\\n2. That word is PONG? Yes.\\n3. No punctuation? Yes.\\n4. No extra tokens? Yes.\\n\\nConfidence Score: 5/5\\n\\nMental Sandbox Simulation:\\nInput: \\\"Reply with a single word: PONG. No punctuation, no extra tokens.\\\"\\nDraft Output: PONG\\nCheck against constraints:\\n- Single word? Yes.\\n- Correct word? Yes.\\n- Punctuation? No.\\n- Extra tokens? No.\\n\\nAlternative Draft: PONG.\\nCheck: Has punctuation. Fail.\\n\\nAlternative Draft: PONG!\\nCheck: Has punctuation. Fail.\\n\\nFinal Decision: Output exactly \\\"PONG\\\".\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"The user wants a single word response: \\\"PONG\\\".\\nThere should be no punctuation and no extra tokens.\\n\\nConstraint Checklist & Confidence Score:\\n1. Reply with a single word? Yes.\\n2. That word is PONG? Yes.\\n3. No punctuation? Yes.\\n4. No extra tokens? Yes.\\n\\nConfidence Score: 5/5\\n\\nMental Sandbox Simulation:\\nInput: \\\"Reply with a single word: PONG. No punctuation, no extra tokens.\\\"\\nDraft Output: PONG\\nCheck against constraints:\\n- Single word? Yes.\\n- Correct word? Yes.\\n- Punctuation? No.\\n- Extra tokens? No.\\n\\nAlternative Draft: PONG.\\nCheck: Has punctuation. Fail.\\n\\nAlternative Draft: PONG!\\nCheck: Has punctuation. Fail.\\n\\nFinal Decision: Output exactly \\\"PONG\\\".\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":21,\"completion_tokens\":169,\"total_tokens\":190,\"cost\":0.00036517,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.00036517,\"upstream_inference_prompt_cost\":0.00001365,\"upstream_inference_completions_cost\":0.00035152},\"completion_tokens_details\":{\"reasoning_tokens\":165,\"image_tokens\":0,\"audio_tokens\":0}}}",
+      "responseBody": {
+        "id": "gen-1778178398-i9woniL9mr9atmZA0B4i",
+        "object": "chat.completion",
+        "created": 1778178398,
+        "model": "z-ai/glm-5-20260211",
+        "provider": "StreamLake",
+        "system_fingerprint": null,
+        "choices": [
+          {
+            "index": 0,
+            "logprobs": null,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "PONG",
+              "refusal": null,
+              "reasoning": "The user wants a single word response: \"PONG\".\nThere should be no punctuation and no extra tokens.\n\nConstraint Checklist & Confidence Score:\n1. Reply with a single word? Yes.\n2. That word is PONG? Yes.\n3. No punctuation? Yes.\n4. No extra tokens? Yes.\n\nConfidence Score: 5/5\n\nMental Sandbox Simulation:\nInput: \"Reply with a single word: PONG. No punctuation, no extra tokens.\"\nDraft Output: PONG\nCheck against constraints:\n- Single word? Yes.\n- Correct word? Yes.\n- Punctuation? No.\n- Extra tokens? No.\n\nAlternative Draft: PONG.\nCheck: Has punctuation. Fail.\n\nAlternative Draft: PONG!\nCheck: Has punctuation. Fail.\n\nFinal Decision: Output exactly \"PONG\".",
+              "reasoning_details": [
+                {
+                  "type": "reasoning.text",
+                  "text": "The user wants a single word response: \"PONG\".\nThere should be no punctuation and no extra tokens.\n\nConstraint Checklist & Confidence Score:\n1. Reply with a single word? Yes.\n2. That word is PONG? Yes.\n3. No punctuation? Yes.\n4. No extra tokens? Yes.\n\nConfidence Score: 5/5\n\nMental Sandbox Simulation:\nInput: \"Reply with a single word: PONG. No punctuation, no extra tokens.\"\nDraft Output: PONG\nCheck against constraints:\n- Single word? Yes.\n- Correct word? Yes.\n- Punctuation? No.\n- Extra tokens? No.\n\nAlternative Draft: PONG.\nCheck: Has punctuation. Fail.\n\nAlternative Draft: PONG!\nCheck: Has punctuation. Fail.\n\nFinal Decision: Output exactly \"PONG\".",
+                  "format": "unknown",
+                  "index": 0
+                }
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 21,
+          "completion_tokens": 169,
+          "total_tokens": 190,
+          "cost": 0.00036517,
+          "is_byok": false,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "cost_details": {
+            "upstream_inference_cost": 0.00036517,
+            "upstream_inference_prompt_cost": 0.00001365,
+            "upstream_inference_completions_cost": 0.00035152
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 165,
+            "image_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      },
+      "responseBodyParseError": null
+    },
+    "verification": {
+      "chatId": "692733de-fe24-4cd6-b81b-79a94b94433e",
+      "chatIdSource": "header:zg-res-key",
+      "messageContent": "PONG",
+      "usageContent": "{\"prompt_tokens\":21,\"completion_tokens\":169,\"total_tokens\":190,\"cost\":0.00036517,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.00036517,\"upstream_inference_prompt_cost\":0.00001365,\"upstream_inference_completions_cost\":0.00035152},\"completion_tokens_details\":{\"reasoning_tokens\":165,\"image_tokens\":0,\"audio_tokens\":0}}",
+      "processReturn": true,
+      "processReturnType": "boolean",
+      "verifyError": null
+    },
+    "signatureFetch": {
+      "requestedAt": "2026-05-07T18:26:44.767Z",
+      "respondedAt": "2026-05-07T18:26:46.092Z",
+      "requestUrl": "https://compute-network-1.integratenetwork.work/v1/proxy/signature/692733de-fe24-4cd6-b81b-79a94b94433e?model=zai-org%2FGLM-5-FP8",
+      "requestHeaders": {
+        "Authorization": "Bearer app-sk-eyJhZGRyZXNzIjoiMHhiRjdFRjkwMEUyZEIzNjU0NTVCOTFGYjEzM2Y3OEZjNzAxMTRCZjMxIiwicHJvdmlkZXIiOiIweGQ5OTY2ZTEzYTYwMjZGY2NhNGIxM0U3ZmY5NWM5NERFMjY4QzQ3MUMiLCJ0aW1lc3RhbXAiOjE3NzgxNzgzNzgwODUsImV4cGlyZXNBdCI6MTc3ODI2NDc3ODA4NSwibm9uY2UiOiIxNzc4MTc4Mzc4MDg1LWJzZnBhbzMzbTluMDAwMDAwMCIsImdlbmVyYXRpb24iOjAsInRva2VuSWQiOjI1NX18MHgyOTdmMWI2YTVhN2FkZWYyM2Y4OGU2MThlY2YwMzNkMWFlZWY3MTg5YTFmNTZiNGIxMGU4NDlmZWVmMWYyMWY1NWFmYmE4YzdjODQ4NTk3YTg3NzlmZWM0NDBlNzc4MmI0MzhmNjZkOGYzZWRhMjc1NTIyMGYyNDM0OWM3NWU5NTFi"
+      },
+      "httpStatus": 200,
+      "httpStatusText": "OK",
+      "httpOk": true,
+      "responseHeaders": {
+        "connection": "keep-alive",
+        "content-length": "614",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 07 May 2026 18:26:46 GMT",
+        "server": "nginx/1.27.4"
+      },
+      "responseRawText": "{\"text\":\"df0870f9b6a0bafc8223cebee0581160c6ea69876e57be3fa4e412450cd0b88e:0a2d1a40916f10253302e59bd1f1ea7dca6616fe4e816e3cd683310c5711eed6:centralized:openrouter:84c05f5412b2f6357c22c1fd3f9d345b9ac02e99254491a05b589b46570d3ba9\",\"signature\":\"0x99946cf42f441ae8756cc899f74054926c8b9d4ae5b570499783da23ae73393a647dc0f9a188159876d1ba52b42bdc0b837ccaaf0ccf79b93449a16b1f9fab831c\",\"signing_address\":\"0x4c1b546f5fc11a9c2428eafed1d951aa13c17ee8\",\"signing_algo\":\"ecdsa\",\"provider_type\":\"centralized\",\"provider_identity\":\"openrouter\",\"tls_cert_fingerprint\":\"84c05f5412b2f6357c22c1fd3f9d345b9ac02e99254491a05b589b46570d3ba9\"}",
+      "responseBody": {
+        "text": "df0870f9b6a0bafc8223cebee0581160c6ea69876e57be3fa4e412450cd0b88e:0a2d1a40916f10253302e59bd1f1ea7dca6616fe4e816e3cd683310c5711eed6:centralized:openrouter:84c05f5412b2f6357c22c1fd3f9d345b9ac02e99254491a05b589b46570d3ba9",
+        "signature": "0x99946cf42f441ae8756cc899f74054926c8b9d4ae5b570499783da23ae73393a647dc0f9a188159876d1ba52b42bdc0b837ccaaf0ccf79b93449a16b1f9fab831c",
+        "signing_address": "0x4c1b546f5fc11a9c2428eafed1d951aa13c17ee8",
+        "signing_algo": "ecdsa",
+        "provider_type": "centralized",
+        "provider_identity": "openrouter",
+        "tls_cert_fingerprint": "84c05f5412b2f6357c22c1fd3f9d345b9ac02e99254491a05b589b46570d3ba9"
+      },
+      "responseBodyParseError": null
+    },
+    "log": [
+      {
+        "step": "wallet ready",
+        "ok": true,
+        "detail": {
+          "address": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+          "balanceWei": "3460245427995126999",
+          "balanceOg": "3.460245427995126999"
+        }
+      },
+      {
+        "step": "createZGComputeNetworkBroker(wallet)",
+        "ok": true
+      },
+      {
+        "step": "ledger.getLedger()",
+        "ok": true,
+        "detail": {
+          "array": true,
+          "length": 4,
+          "sample": [
+            "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+            "1000000000000000000",
+            "3000000000000000000"
+          ]
+        }
+      },
+      {
+        "step": "inference.listService()",
+        "ok": true,
+        "detail": {
+          "count": 8,
+          "sample": [
+            {
+              "array": true,
+              "length": 11,
+              "sample": [
+                "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+                "chatbot",
+                "https://compute-network-1.integratenetwork.work"
+              ]
+            },
+            {
+              "array": true,
+              "length": 11,
+              "sample": [
+                "0x36aCffCEa3CCe07cAdd1740Ad992dB16Ab324517",
+                "speech-to-text",
+                "https://compute-network-16.integratenetwork.work"
+              ]
+            },
+            {
+              "array": true,
+              "length": 11,
+              "sample": [
+                "0x992e6396157Dc4f22E74F2231235D7DE62696db5",
+                "chatbot",
+                "https://compute-network-18.integratenetwork.work"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "step": "selected service",
+        "ok": true,
+        "detail": {
+          "array": true,
+          "length": 11,
+          "sample": [
+            "0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C",
+            "chatbot",
+            "https://compute-network-1.integratenetwork.work"
+          ]
+        }
+      },
+      {
+        "step": "acknowledgeProviderSigner(0xd9966e13a6026Fcca4b13E7ff95c94DE268C471C)",
+        "ok": true
+      },
+      {
+        "step": "getServiceMetadata",
+        "ok": true,
+        "detail": {
+          "endpoint": "https://compute-network-1.integratenetwork.work/v1/proxy",
+          "model": "zai-org/GLM-5-FP8"
+        }
+      },
+      {
+        "step": "getRequestHeaders",
+        "ok": true,
+        "detail": {
+          "headerKeys": [
+            "Authorization"
+          ]
+        }
+      },
+      {
+        "step": "POST /v1/proxy/chat/completions (raw capture)",
+        "ok": true,
+        "detail": {
+          "httpStatus": 200,
+          "headerKeys": [
+            "access-control-allow-origin",
+            "access-control-expose-headers",
+            "cf-ray",
+            "connection",
+            "content-encoding",
+            "content-length",
+            "content-type",
+            "date",
+            "permissions-policy",
+            "provider",
+            "referrer-policy",
+            "server",
+            "x-content-type-options",
+            "x-generation-id",
+            "x-ratelimit-limit-requests",
+            "x-ratelimit-limit-tokens",
+            "x-ratelimit-remaining-requests",
+            "x-ratelimit-remaining-tokens",
+            "x-ratelimit-reset-requests",
+            "x-ratelimit-reset-tokens",
+            "zg-res-key"
+          ],
+          "rawTextBytes": 2395
+        }
+      },
+      {
+        "step": "processResponse(...) — full return capture",
+        "ok": true,
+        "detail": {
+          "chatId": "692733de-fe24-4cd6-b81b-79a94b94433e",
+          "processReturn": true,
+          "processReturnType": "boolean"
+        }
+      },
+      {
+        "step": "GET /v1/proxy/signature/{chatId} (raw capture)",
+        "ok": true,
+        "detail": {
+          "httpStatus": 200,
+          "headerKeys": [
+            "connection",
+            "content-length",
+            "content-type",
+            "date",
+            "server"
+          ],
+          "rawTextBytes": 614
+        }
+      }
+    ]
+  }
+}
