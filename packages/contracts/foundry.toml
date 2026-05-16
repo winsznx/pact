@@ -1,0 +1,24 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["node_modules", "lib"]
+solc_version = "0.8.24"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+remappings = [
+  "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/",
+  "@openzeppelin/contracts-upgradeable/=node_modules/@openzeppelin/contracts-upgradeable/"
+]
+# Deploy / verify scripts read/write deployments/mainnet.json. Scoped
+# narrowly so a stray vm.readFile / writeFile in tests can't escape.
+fs_permissions = [
+    { access = "read-write", path = "./deployments" },
+]
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = false

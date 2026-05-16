@@ -1,0 +1,8 @@
+node_modules/
+out/
+cache/
+broadcast/
+*.log
+# Dry-run manifest from forge script simulation. Real mainnet.json from
+# Step 2G is committed (operator-blessed; team / judges read it).
+deployments/*.dryrun.json
