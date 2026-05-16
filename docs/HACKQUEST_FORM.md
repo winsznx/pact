@@ -41,6 +41,12 @@ Copy-paste into the official HackQuest form. All fields below come from
 > Compute (every job's TEE attestation), Storage (output blobs and
 > reputation history, v0.2), ERC-7857 INFT (seller identity + reputation
 > accumulator), DA (job event log).
+>
+> For developers integrating PACT into agent systems, the buyer SDK ships
+> as `@trypact/sdk` on npm — typed TypeScript, viem as the only peer
+> dependency, ~50 KB ESM bundle. 25 lines of code to escrow funds,
+> watch through settlement, and cryptographically verify the TEE
+> attestation locally with no chain RPC.
 
 ---
 
@@ -143,8 +149,10 @@ ASCII diagram in [README.md](../README.md). For the HackQuest form
 
 ## Bonus deliverables
 
+- **Published SDK**: [`@trypact/sdk@0.1.0`](https://www.npmjs.com/package/@trypact/sdk) on npm. Typed TypeScript buyer API (`createJob`, `watchJob`, `getAttestation`, `run`, local `verify`). Source: [`packages/sdk/`](../packages/sdk/). README with 25-line quickstart.
+- **Explorer subdomain**: `explorer.trypact.xyz` (mapped to `/explore` via Next middleware — same Vercel deployment, same brand system).
 - **Pitch deck**: <TODO Tim — link slide deck if produced>
-- **Tutorial**: README.md "Run it yourself" section serves as the tutorial.
+- **Tutorial**: README.md "Integrate in 25 lines (SDK)" + "Run it yourself" serve as the tutorial.
 - **Frontend demo link**: <https://trypact.xyz>. Deploy steps documented in [docs/DEPLOY.md](./DEPLOY.md).
 - **Backend / API docs**: Solidity NatSpec on every external function. Source links:
   - `packages/contracts/src/PactEscrow.sol`

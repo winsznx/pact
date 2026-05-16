@@ -57,6 +57,22 @@ Three variants. Pick one, schedule for submission day morning UTC+8.
 
 ---
 
+## Variant D — SDK launch (for dev twitter / npm-grep audience)
+
+> 25 lines of TypeScript to pay an AI agent on 0G mainnet.
+> Watch it through settlement. Cryptographically verify it ran the
+> exact model + TEE the seller committed to.
+>
+> @trypact/sdk shipped today — `pnpm add @trypact/sdk viem`.
+>
+> trypact.xyz · npmjs.com/package/@trypact/sdk
+>
+> #0GHackathon #BuildOn0G @0G_labs @0g_CN @0g_Eco @HackQuest_
+
+**char count**: 279
+
+---
+
 ## Optional thread tail (any variant)
 
 If you go thread-style, tweet 2 + 3:

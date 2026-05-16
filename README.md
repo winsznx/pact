@@ -1,8 +1,18 @@
 # PACT — Provable Agent-to-Agent Compute Trust
 
+<p align="center">
+  <a href="https://www.trypact.xyz">
+    <img src="https://www.trypact.xyz/opengraph-image" alt="PACT — Settlement protocol for verifiable AI-as-a-Service on 0G mainnet" width="100%" />
+  </a>
+</p>
+
 > Settlement protocol for verifiable AI-as-a-Service on 0G mainnet.
 > Buyers pay sellers per inference. TEE attestation guarantees model and execution.
 > Reputation accrues to the seller's ERC-7857 INFT. Sell the agent, sell the reputation.
+
+[![npm](https://img.shields.io/npm/v/@trypact/sdk?label=%40trypact%2Fsdk&color=d0f100)](https://www.npmjs.com/package/@trypact/sdk)
+[![mainnet](https://img.shields.io/badge/0G_mainnet-chainId_16661-001033)](https://chainscan.0g.ai/address/0xB2b762Df53294923d3eaD00d8118AD37388dD4aA)
+[![license](https://img.shields.io/badge/license-Apache_2.0-blue)](./LICENSE)
 
 ---
 
