@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "../../../../docs/design/tokens.tailwind.css";
+
+/* Semantic aliases. `--shadow-cta` and `--shadow-xl` are component-friendly
+   names that resolve to the canonical Antimetal-corrected shadow stacks
+   in tokens.tailwind.css. `--height-nav: 64px` is the GAP_ANALYSIS-locked
+   nav height (the live Antimetal sticky nav computes to 64px). */
+@theme {
+  --page-max-width: 1200px;
+  --section-gap: 80px;
+  --height-nav: 64px;
+  --shadow-cta: var(--shadow-cta-pill);
+  --shadow-xl: var(--shadow-card-elevated);
+  --gradient-hero: var(--gradient-hero-gradient);
+}
+
+@layer base {
+  html,
+  body {
+    /* Mobile clip: any rogue child wider than the viewport (long mono
+       hashes, oversized hero badges) shouldn't introduce a horizontal
+       scrollbar on small screens. Layout-shaping containers already cap
+       at --page-max-width; this is the last-line defence. */
+    overflow-x: clip;
+    background-color: var(--color-ghost-canvas);
+    color: var(--color-midnight-navy);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Antimetal-corrected: hero/section headlines are upright (font-style
+     normal). No display-italic helper class; consumers reach for
+     `font-display` directly. */
+
+  ::selection {
+    background: var(--color-chartreuse-pulse);
+    color: var(--color-midnight-navy);
+  }
+
+  /* Skeleton pulse — 1.5s opacity cycle. Used by ui/Skeleton.tsx.
+     Decorative animation, not theme color. */
+  @keyframes pact-skeleton-pulse {
+    0%   { opacity: 0.4; }
+    50%  { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+  .pact-skeleton {
+    animation: pact-skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
