@@ -1,0 +1,20 @@
+{
+  "name": "@pact/shared",
+  "version": "0.0.1",
+  "private": true,
+  "description": "PACT — typed contract addresses, chain config, and ABIs shared across apps and SDK packages.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./contracts": "./src/contracts.ts",
+    "./abis": "./src/abis.ts"
+  },
+  "scripts": {
+    "build:abis": "node scripts/extract-abis.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "5.6.3"
+  }
+}
