@@ -129,6 +129,9 @@ export function Footer() {
                 Resources
               </div>
               <ul className="mt-12 space-y-8 text-sm">
+                <FooterLink href="https://docs.trypact.xyz">
+                  Docs ↗
+                </FooterLink>
                 <FooterLink href={PACT_EXPLORER_URL}>
                   0G ChainScan ↗
                 </FooterLink>
