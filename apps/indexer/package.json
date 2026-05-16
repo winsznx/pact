@@ -1,0 +1,27 @@
+{
+  "name": "@pact/indexer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PACT event indexer — polls 0G mainnet, exposes REST cache at api.trypact.xyz.",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@trypact/sdk": "^0.1.0",
+    "express": "4.21.2",
+    "viem": "2.21.45"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.0",
+    "@types/node": "22.10.5",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
