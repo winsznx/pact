@@ -12,6 +12,7 @@ import { Breadcrumb } from "@/components/service-detail/Breadcrumb";
 import { ServicePricingCard } from "@/components/service-detail/ServicePricingCard";
 import { ServiceIdentityCard } from "@/components/service-detail/ServiceIdentityCard";
 import { ServiceStatsStrip } from "@/components/service-detail/ServiceStatsStrip";
+import { ServiceRecentJobs } from "@/components/service-detail/ServiceRecentJobs";
 import { useService, useReputation, useBond } from "@/lib/wagmi";
 import { formatReputationIndex } from "@/lib/reputation";
 
@@ -204,45 +205,19 @@ export default function ServiceDetailPage({
               Recent jobs
             </h2>
           </div>
-          {settledJobs > 0 ? (
-            <Card variant="section" className="p-32 text-center">
-              <p className="text-body leading-body tracking-body text-midnight-navy">
-                {settledJobs} settled{" "}
-                {settledJobs === 1 ? "job" : "jobs"}, totalling{" "}
-                {Number(lifetimeEarned).toFixed(3)} $0G to the seller (95% of{" "}
-                {(Number(lifetimeEarned) / 0.95).toFixed(3)} $0G buyer paid).
-                Browse the live{" "}
-                <a
-                  href="https://api.trypact.xyz/v1/jobs"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-midnight-navy underline decoration-fog-border underline-offset-4 hover:text-chartreuse-pulse hover:decoration-chartreuse-pulse transition-colors"
-                >
-                  indexer feed
-                </a>{" "}
-                or{" "}
-                <Link
-                  href="/jobs/2"
-                  className="text-midnight-navy underline decoration-fog-border underline-offset-4 hover:text-chartreuse-pulse hover:decoration-chartreuse-pulse transition-colors"
-                >
-                  job #2
-                </Link>
-                .
-              </p>
-            </Card>
-          ) : (
-            <Card variant="section" className="p-72 text-center">
-              <p className="text-body leading-body tracking-body text-midnight-navy">
-                No jobs settled yet. Be the first.
-              </p>
-              <Link
-                href={`/jobs/new?serviceId=${serviceIdRaw}`}
-                className="mt-20 inline-block font-mono text-caption tracking-caption text-midnight-navy hover:text-chartreuse-pulse transition-colors"
-              >
-                Run an inference →
-              </Link>
-            </Card>
-          )}
+          <ServiceRecentJobs serviceId={serviceId} />
+          <div className="mt-16 text-center font-mono text-caption tracking-caption text-slate-ink">
+            Reading from{" "}
+            <a
+              href="https://api.trypact.xyz/v1/jobs"
+              target="_blank"
+              rel="noreferrer"
+              className="text-midnight-navy hover:text-chartreuse-pulse transition-colors"
+            >
+              api.trypact.xyz/v1/jobs
+            </a>
+            . Refreshes every 10s.
+          </div>
         </div>
       </section>
 
