@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * "Three lines to verifiable inference" — code panel showing the @pact/sdk
+ * "Three lines to verifiable inference" — code panel showing the @trypact/sdk
  * happy-path. Sits between the 3-column features section and the
  * provenance line.
  *
@@ -50,36 +50,46 @@ export function IntegrationSnippet() {
       <div className="bg-deep-cosmos rounded-cards p-32">
         <pre className="font-mono text-label leading-label tracking-label text-frost-white whitespace-pre-wrap break-words">
           <Line>
-            <Keyword>import</Keyword> {"{ "}createPactClient{" } "}
-            <Keyword>from</Keyword> <Str>{"'@pact/sdk'"}</Str>
-          </Line>
-          <Line>{" "}</Line>
-          <Line>
-            <Keyword>const</Keyword> client = createPactClient({"{ "}chain:{" "}
-            <Str>{"'0G'"}</Str>
-            {" }"})
+            <Keyword>import</Keyword> {"{ PactClient } "}
+            <Keyword>from</Keyword> <Str>{"'@trypact/sdk'"}</Str>
           </Line>
           <Line>
-            <Keyword>const</Keyword> job = <Keyword>await</Keyword>{" "}
-            client.createJob({"{"}
+            <Keyword>import</Keyword>{" "}
+            {"{ createPublicClient, createWalletClient, http } "}
+            <Keyword>from</Keyword> <Str>{"'viem'"}</Str>
           </Line>
-          <Line>{"  "}serviceId: 1,</Line>
+          <Line>{" "}</Line>
           <Line>
-            {"  "}prompt:{" "}
-            <Str>{"'Audit this contract for vulnerabilities'"}</Str>,
+            <Keyword>const</Keyword> pact = <Keyword>new</Keyword>{" "}
+            PactClient({"{"}
           </Line>
           <Line>
-            {"  "}amount: <Str>{"'0.001'"}</Str>
+            {"  "}publicClient: createPublicClient(
+            {"{ chain, transport: http() }"}),
+          </Line>
+          <Line>
+            {"  "}walletClient: createWalletClient(
+            {"{ account, chain, transport: http() }"}),
           </Line>
           <Line>{"})"}</Line>
+          <Line>{" "}</Line>
           <Line>
             <Keyword>const</Keyword> result = <Keyword>await</Keyword>{" "}
-            job.waitForSettlement()
+            pact.run({"{"}
           </Line>
-          <Line>{" "}</Line>
+          <Line>{"  "}serviceId: 1n,</Line>
+          <Line>
+            {"  "}prompt:{" "}
+            <Str>
+              {"'Audit this Solidity contract for reentrancy vulnerabilities'"}
+            </Str>
+            ,
+          </Line>
+          <Line>{"})"}</Line>
+          <Line>{" "}</Line>
           <Line>
             <Comment>
-              {"// result.attestation.signer === 0x4C1b546f...7ee8 ✓"}
+              {"// result.verified.recoveredSigner === 0x4C1b546f...7ee8 ✓"}
             </Comment>
           </Line>
         </pre>
@@ -87,7 +97,7 @@ export function IntegrationSnippet() {
 
       <div className="mt-16 text-center">
         <span className="font-mono text-caption tracking-caption text-slate-ink">
-          @pact/sdk · npm install pact-sdk · TypeScript-first
+          @trypact/sdk · pnpm add @trypact/sdk viem · TypeScript-first
         </span>
       </div>
     </section>

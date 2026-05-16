@@ -88,7 +88,7 @@ export default function HomePage() {
       </section>
 
       {/* "Three lines to verifiable inference" — dark code panel showing
-          the @pact/sdk surface. Brief deep-cosmos rhyme back to the hero
+          the @trypact/sdk surface. Brief deep-cosmos rhyme back to the hero
           before the page closes on the provenance line + footer. */}
       <IntegrationSnippet />
 
