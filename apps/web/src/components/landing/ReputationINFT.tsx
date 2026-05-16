@@ -1,24 +1,42 @@
+"use client";
+
+import { formatEther } from "viem";
+
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { StatNumber } from "@/components/ui/StatNumber";
 import { Hash } from "@/components/ui/Hash";
+import { useReputation, useService } from "@/lib/wagmi";
+import { formatReputationIndex } from "@/lib/reputation";
 
 /**
- * Reputation-as-INFT preview. The numbers below are illustrative for CHUNK 1
- * (no chain reads yet) — they map to ReputationVault.getReputation(serviceId)
- * once the live read path lands. The moat narrative is the *transferability*:
- * sell the INFT, sell the reputation. That's what the bottom-row callout
- * communicates.
+ * Reputation-as-INFT preview. Reads Service 1 live from
+ * PactRegistry + ReputationVault on 0G mainnet. The moat narrative is
+ * the *transferability*: sell the INFT, sell the reputation. That's what
+ * the bottom-row callout communicates.
  */
-const SELLER_ADDR = "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31" as const;
+const SERVICE_ID = 1n;
 
 export function ReputationINFT() {
+  const { data: service } = useService(SERVICE_ID);
+  const { data: reputation } = useReputation(SERVICE_ID);
+
+  const owner = service?.seller ?? "0x0000000000000000000000000000000000000000";
+  const tokenId = service ? service.inftTokenId.toString() : "—";
+  const settledJobs = reputation ? Number(reputation.totalJobs).toString() : "0";
+  const lifetime = reputation
+    ? Number(formatEther(reputation.totalVolume)).toFixed(3)
+    : "0.000";
+  const score = reputation
+    ? formatReputationIndex(reputation.weightedScore)
+    : "—";
+
   return (
     <Card variant="elevated" className="p-20">
       <div className="flex items-start justify-between gap-12">
         <div>
           <div className="flex items-center gap-8 text-caption text-slate-ink">
-            <span className="font-mono">INFT #0</span>
+            <span className="font-mono">INFT #{tokenId}</span>
             <Badge variant="neutral" className="text-caption px-8 py-4 leading-caption">
               ERC-7857 · transferable
             </Badge>
@@ -32,20 +50,20 @@ export function ReputationINFT() {
             owner
           </div>
           <div className="mt-4">
-            <Hash value={SELLER_ADDR} kind="address" />
+            <Hash value={owner} kind="address" />
           </div>
         </div>
       </div>
 
       <div className="mt-20 grid grid-cols-3 gap-12 text-center">
-        <Stat label="settled jobs" value="0" />
-        <Stat label="lifetime $0G" value="0.000" />
-        <Stat label="weighted score" value="—" />
+        <Stat label="settled jobs" value={settledJobs} />
+        <Stat label="lifetime $0G" value={lifetime} />
+        <Stat label="weighted score" value={score} />
       </div>
 
       <div className="mt-20 text-caption text-slate-ink leading-caption tracking-caption">
-        Try to fake this — you can't. Try to transfer it — you can.
-        Sell the agent, sell its reputation. INFTs become economic instruments.
+        Try to fake this, you can&apos;t. Try to transfer it, you can. Sell
+        the agent, sell its reputation. INFTs become economic instruments.
       </div>
     </Card>
   );

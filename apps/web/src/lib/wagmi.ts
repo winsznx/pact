@@ -9,6 +9,8 @@ import {
   PACT_RPC_URL_PRIMARY,
   PactEscrowAbi,
   PactRegistryAbi,
+  ReputationVaultAbi,
+  SlashingArbiterAbi,
 } from "@pact/shared";
 
 /// 0G mainnet chain definition. Native currency symbol is "0G" — the chain
@@ -56,6 +58,16 @@ export const pactEscrowContract = {
 export const pactRegistryContract = {
   address: PACT_ADDRESSES.PactRegistry,
   abi: PactRegistryAbi,
+} as const;
+
+export const reputationVaultContract = {
+  address: PACT_ADDRESSES.ReputationVault,
+  abi: ReputationVaultAbi,
+} as const;
+
+export const slashingArbiterContract = {
+  address: PACT_ADDRESSES.SlashingArbiter,
+  abi: SlashingArbiterAbi,
 } as const;
 
 /**
@@ -109,6 +121,38 @@ export function useService(serviceId: bigint) {
   return useReadContract({
     ...pactRegistryContract,
     functionName: "getService",
+    args: [serviceId],
+    query: {
+      enabled: serviceId > 0n,
+      refetchInterval: 30_000,
+    },
+  });
+}
+
+/**
+ * Read a service's reputation (totalJobs, totalVolume, weightedScore,
+ * firstJobAt, lastJobAt). Polls every 15s — reputation only changes on
+ * settled jobs.
+ */
+export function useReputation(serviceId: bigint) {
+  return useReadContract({
+    ...reputationVaultContract,
+    functionName: "getReputation",
+    args: [serviceId],
+    query: {
+      enabled: serviceId > 0n,
+      refetchInterval: 15_000,
+    },
+  });
+}
+
+/**
+ * Read a service's bond balance from SlashingArbiter. Polls every 30s.
+ */
+export function useBond(serviceId: bigint) {
+  return useReadContract({
+    ...slashingArbiterContract,
+    functionName: "getBond",
     args: [serviceId],
     query: {
       enabled: serviceId > 0n,
