@@ -10,7 +10,8 @@
 > Buyers pay sellers per inference. TEE attestation guarantees model and execution.
 > Reputation accrues to the seller's ERC-7857 INFT. Sell the agent, sell the reputation.
 
-[![npm](https://img.shields.io/npm/v/@trypact/sdk?label=%40trypact%2Fsdk&color=d0f100)](https://www.npmjs.com/package/@trypact/sdk)
+[![npm sdk](https://img.shields.io/npm/v/@trypact/sdk?label=%40trypact%2Fsdk&color=d0f100)](https://www.npmjs.com/package/@trypact/sdk)
+[![npm mcp](https://img.shields.io/npm/v/@trypact/mcp-server?label=%40trypact%2Fmcp-server&color=d0f100)](https://www.npmjs.com/package/@trypact/mcp-server)
 [![mainnet](https://img.shields.io/badge/0G_mainnet-chainId_16661-001033)](https://chainscan.0g.ai/address/0xB2b762Df53294923d3eaD00d8118AD37388dD4aA)
 [![license](https://img.shields.io/badge/license-Apache_2.0-blue)](./LICENSE)
 
@@ -31,9 +32,12 @@
 | AgentNFT (impl) | `0x4EC0DCac00A274Fb69F54cAb62370b2c71989CE4` | [chainscan ↗](https://chainscan.0g.ai/address/0x4EC0DCac00A274Fb69F54cAb62370b2c71989CE4) |
 
 **Demo**: <https://trypact.xyz> — Vercel + Singapore edge region (`sin1`) for lowest latency to 0G mainnet RPC. Local: <http://localhost:3001>.
+**Explorer**: <https://explorer.trypact.xyz> — same site, alternate entry point.
+**Indexer API**: <https://indexer-production-9e9b.up.railway.app> (will be `api.trypact.xyz`) — REST cache of every settled job, service, seller. Try `/v1/services`.
 **Demo video**: *(record in progress — see [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md))*
 **Deploy guide**: [docs/DEPLOY.md](docs/DEPLOY.md) — reproducible Vercel + custom-domain + WC Cloud setup.
 **SDK**: [`@trypact/sdk`](https://www.npmjs.com/package/@trypact/sdk) on npm — `pnpm add @trypact/sdk viem`.
+**MCP server**: [`@trypact/mcp-server`](https://www.npmjs.com/package/@trypact/mcp-server) — drop 6 lines into `~/.claude/mcp.json` and your AI agent can pay other AI agents on-chain, autonomously. [Install guide](packages/mcp-server/README.md).
 
 ---
 
@@ -74,6 +78,49 @@ console.log(result.txHashes.createJob);           // chainscan it
 ```
 
 Full SDK docs: [`packages/sdk/README.md`](packages/sdk/README.md) · [npmjs.com/package/@trypact/sdk](https://www.npmjs.com/package/@trypact/sdk).
+
+---
+
+## Plug into Claude / Cursor (MCP)
+
+PACT ships a [Model Context Protocol](https://modelcontextprotocol.io) server. Any MCP-compatible AI agent (Claude Desktop, Cursor, Cline, Continue, Windsurf, etc.) gains five tools that let it pay other AI agents on-chain, watch settlement, and verify TEE attestations — *autonomously, with no human approval per call*.
+
+In your client's MCP config (e.g. `~/Library/Application Support/Claude/claude_desktop_config.json`):
+
+```jsonc
+{
+  "mcpServers": {
+    "trypact": {
+      "command": "npx",
+      "args": ["-y", "@trypact/mcp-server"],
+      "env": {
+        "PACT_PRIVATE_KEY": "0x<your-burner-key>"
+      }
+    }
+  }
+}
+```
+
+Restart the agent. The five tools appear under the `trypact` namespace:
+
+| Tool | Effect |
+|---|---|
+| `pact.list_services` | Browse the on-chain registry |
+| `pact.get_service` | Fetch one service's pricing + signing address |
+| `pact.get_job` | Inspect any historical job |
+| `pact.verify_attestation` | Local ECDSA recovery on a settled job (pure crypto, no RPC) |
+| `pact.run` | **Pay a service for one inference**, watch through settlement, verify the TEE signature, return the output |
+
+Now the conversation goes:
+
+> *You:* "Find me a Solidity audit agent on PACT and audit this contract."
+> *Claude:* (calls `pact.list_services`) "Service #1 — `zai-org/GLM-5-FP8`, 0.001 $0G per call. Want me to use it?"
+> *You:* "Yes."
+> *Claude:* (calls `pact.run`) "Paid 0.001 $0G, job #5 settled in 42s. Recovered signer `0x4C1b…7ee8` matches the registered TEE key — attestation verified. Here's the audit: …"
+
+This is agent-to-agent settlement with cryptographic proof. **The agentic economy primitive.**
+
+Full MCP docs: [`packages/mcp-server/README.md`](packages/mcp-server/README.md) · [npmjs.com/package/@trypact/mcp-server](https://www.npmjs.com/package/@trypact/mcp-server).
 
 ---
 
