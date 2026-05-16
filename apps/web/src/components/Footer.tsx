@@ -91,9 +91,14 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/explore" className="hover:underline">
-                  Explorer (soon)
-                </Link>
+                <a
+                  href="https://explorer.trypact.xyz"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline"
+                >
+                  Explorer ↗
+                </a>
               </li>
             </ul>
           </div>
