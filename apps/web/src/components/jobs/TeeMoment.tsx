@@ -102,20 +102,25 @@ export function TeeMoment({
                 {outputRootHash && outputRootHash !== "0x" ? (
                   <div>
                     <div className="text-caption uppercase tracking-uppercase text-slate-ink mb-6 font-mono">
-                      Output root hash (on chain commitment)
+                      outputRootHash (on chain commitment)
                     </div>
                     <div className="font-mono text-caption leading-subheading tracking-caption text-midnight-navy bg-data-chip rounded-cardssmall p-12 break-all">
                       {outputRootHash}
                     </div>
+                    <p className="mt-8 font-mono text-caption leading-subheading tracking-caption text-slate-ink">
+                      This is what the TEE signed. Any bytes you receive can
+                      be verified against it.
+                    </p>
                   </div>
                 ) : null}
                 <p className="font-mono text-caption leading-subheading tracking-caption text-slate-ink">
-                  Retrieve the bytes via{" "}
+                  v0.2 ships delivery over <strong>0G Storage</strong> with{" "}
+                  <strong>ECIES</strong> to the buyer&apos;s wallet, end to end
+                  on 0G primitives. Retrieve today via{" "}
                   <code className="text-midnight-navy">@trypact/sdk</code>{" "}
                   <code className="text-midnight-navy">pact.run</code> or the{" "}
                   <code className="text-midnight-navy">trypact.run</code>{" "}
-                  MCP tool. v0.2 ships output via 0G Storage with ECIES to the
-                  buyer&apos;s wallet.
+                  MCP tool.
                 </p>
               </div>
             )}

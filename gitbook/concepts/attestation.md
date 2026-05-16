@@ -109,6 +109,16 @@ That's the entire fraud surface: the signing key itself. There is no other forge
 
 ***
 
+## Output delivery: v0.1 vs v0.2
+
+The protocol commits to a hash of the output bytes on chain (`Job.outputRootHash`). The hash is what the TEE signed and what `AttestationVerifier` checks. Delivery of the actual bytes is the seller's channel by design, not the protocol's. This is the boundary between **provenance** and **distribution**.
+
+**v0.1 (this submission).** The seller writes output bytes to a local file under `apps/seller-reference/jobs-output/<jobId>.txt`. Buyers receive the bytes through whatever channel the seller offers (direct return from `pact.run`, MCP `trypact.run`, or out of band). The on-chain `outputRootHash` is the canonical commitment any buyer can verify the bytes against.
+
+**v0.2 plan.** Add `bytes32 outputStorageRoot` to `PactEscrow.Job`. On `submitAttestation` the seller agent ECIES-encrypts the output bytes to the buyer's wallet public key, uploads the ciphertext to **0G Storage** via `@0glabs/0g-ts-sdk`, and includes the storage root in the attestation call. The contract verifies that `keccak256(ciphertext) == outputStorageRoot` and `keccak256(plaintext) == outputRootHash` (the latter already on chain in v0.1). The buyer SDK reads `outputStorageRoot` from the job, fetches the ciphertext from 0G Storage, decrypts locally with their wallet's derived key, and verifies the decrypted bytes against `outputRootHash`. No new trust assumptions: the same TEE-bound signing key still attests, the same on-chain commitment still proves the bytes. The change adds an encrypted public-blob delivery channel that is verifiable against what got signed, replacing the v0.1 local-handoff convention.
+
+***
+
 ## Source
 
 * Solidity verifier: [`packages/contracts/src/AttestationVerifier.sol`](https://github.com/winsznx/pact/blob/main/packages/contracts/src/AttestationVerifier.sol)
