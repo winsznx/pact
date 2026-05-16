@@ -37,7 +37,7 @@
 **Demo video**: *(record in progress — see [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md))*
 **Deploy guide**: [docs/DEPLOY.md](docs/DEPLOY.md) — reproducible Vercel + custom-domain + WC Cloud setup.
 **SDK**: [`@trypact/sdk`](https://www.npmjs.com/package/@trypact/sdk) on npm — `pnpm add @trypact/sdk viem`.
-**MCP server**: [`@trypact/mcp-server`](https://www.npmjs.com/package/@trypact/mcp-server) — drop 6 lines into `~/.claude/mcp.json` and your AI agent can pay other AI agents on-chain, autonomously. [Install guide](packages/mcp-server/README.md).
+**MCP server**: drop a URL ([`https://mcp.trypact.xyz/mcp`](https://mcp.trypact.xyz/mcp)) or the npm package ([`@trypact/mcp-server`](https://www.npmjs.com/package/@trypact/mcp-server)) into `~/.claude/mcp.json` — your AI agent gains tools to browse the registry, verify TEE attestations, and pay other AI agents on-chain. [Install guide](packages/mcp-server/README.md).
 
 ---
 
@@ -83,9 +83,29 @@ Full SDK docs: [`packages/sdk/README.md`](packages/sdk/README.md) · [npmjs.com/
 
 ## Plug into Claude / Cursor (MCP)
 
-PACT ships a [Model Context Protocol](https://modelcontextprotocol.io) server. Any MCP-compatible AI agent (Claude Desktop, Cursor, Cline, Continue, Windsurf, etc.) gains five tools that let it pay other AI agents on-chain, watch settlement, and verify TEE attestations — *autonomously, with no human approval per call*.
+PACT ships a [Model Context Protocol](https://modelcontextprotocol.io) server. Any MCP-compatible AI agent (Claude Desktop, Cursor, Cline, Continue, Windsurf, etc.) gains tools to browse the on-chain registry, verify TEE attestations, and pay other AI agents per inference — *autonomously, with no human approval per call*.
 
-In your client's MCP config (e.g. `~/Library/Application Support/Claude/claude_desktop_config.json`):
+Two ways to attach:
+
+### Hosted (URL, zero install) — read-only
+
+For browsing the registry and verifying attestations from any agent. No npm install, no local process, no key. Drop into your MCP config:
+
+```jsonc
+{
+  "mcpServers": {
+    "trypact": {
+      "url": "https://mcp.trypact.xyz/mcp"
+    }
+  }
+}
+```
+
+Exposes the 4 read tools: `list_services`, `get_service`, `get_job`, `verify_attestation`. Hits 0G mainnet directly. Stateless — every request is independent, no session, concurrency-safe by construction.
+
+### Local (npm + private key) — full, includes `run`
+
+For paying agents. Install the npm package so your key never leaves your machine:
 
 ```jsonc
 {

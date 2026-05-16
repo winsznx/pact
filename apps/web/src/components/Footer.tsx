@@ -138,6 +138,9 @@ export function Footer() {
                 <FooterLink href="https://api.trypact.xyz/v1/services">
                   Indexer API ↗
                 </FooterLink>
+                <FooterLink href="https://mcp.trypact.xyz/mcp">
+                  Hosted MCP endpoint ↗
+                </FooterLink>
                 <FooterLink href="https://www.npmjs.com/package/@trypact/sdk">
                   @trypact/sdk on npm ↗
                 </FooterLink>
