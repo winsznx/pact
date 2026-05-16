@@ -163,6 +163,46 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
+      {/* Integrate this service — @trypact/sdk code block with this
+          service's id bound in. Server-rendered, no copy button (judges
+          select-all + cmd-c). The code is real and runnable. */}
+      <section className="bg-ghost-canvas border-t border-fog-border/50">
+        <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 py-72">
+          <div className="text-center mb-40">
+            <div className="text-caption uppercase tracking-uppercase text-slate-ink mb-12 font-mono">
+              For developers
+            </div>
+            <h2 className="font-display font-normal text-heading-sm tracking-heading-sm leading-heading-sm text-midnight-navy">
+              Integrate this service in 25 lines
+            </h2>
+            <p className="mt-12 text-body leading-body tracking-body text-storm-gray max-w-prose mx-auto">
+              Buyer SDK via npm. Typed TypeScript, viem as the only peer
+              dependency. ~50&nbsp;KB ESM bundle. Local ECDSA verify with no
+              RPC.
+            </p>
+          </div>
+          <Card variant="elevated" className="p-0 overflow-hidden">
+            <div className="bg-midnight-navy text-frost-white font-mono text-caption leading-subheading tracking-caption p-24 overflow-x-auto">
+              <pre className="whitespace-pre"><code>{integrateSnippet(s.id)}</code></pre>
+            </div>
+          </Card>
+          <div className="mt-20 text-center font-mono text-caption tracking-caption text-slate-ink">
+            <code className="bg-data-chip text-midnight-navy px-12 py-4 rounded-cardssmall">
+              pnpm add @trypact/sdk viem
+            </code>
+            {" · "}
+            <a
+              href="https://www.npmjs.com/package/@trypact/sdk"
+              target="_blank"
+              rel="noreferrer"
+              className="text-midnight-navy underline decoration-fog-border underline-offset-4 hover:text-chartreuse-pulse hover:decoration-chartreuse-pulse transition-colors"
+            >
+              npmjs.com/package/@trypact/sdk ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Provenance line */}
       <section className="bg-ghost-canvas border-t border-fog-border/50">
         <div className="mx-auto w-full max-w-[var(--page-max-width)] px-24 py-24">
@@ -190,4 +230,33 @@ export default async function ServiceDetailPage({
 
 function shortAddress(addr: string): string {
   return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
+}
+
+function integrateSnippet(serviceId: number): string {
+  return `import { PactClient } from "@trypact/sdk";
+import { createPublicClient, createWalletClient, http } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+
+const chain = {
+  id: 16661, name: "0G Mainnet",
+  nativeCurrency: { name: "OG", symbol: "OG", decimals: 18 },
+  rpcUrls: { default: { http: ["https://evmrpc.0g.ai"] } },
+} as const;
+
+const account = privateKeyToAccount(process.env.BUYER_KEY as \`0x\${string}\`);
+
+const pact = new PactClient({
+  publicClient: createPublicClient({ chain, transport: http() }),
+  walletClient: createWalletClient({ account, chain, transport: http() }),
+});
+
+// Escrow funds, watch through settlement, verify TEE attestation locally.
+const result = await pact.run({
+  serviceId: ${serviceId}n,
+  prompt: "Audit this Solidity contract for reentrancy vulnerabilities",
+});
+
+console.log(result.verified.ok);                  // true on authentic attestation
+console.log(result.verified.recoveredSigner);     // matches service.signingAddress
+console.log(result.txHashes.createJob);           // chainscan it`;
 }
