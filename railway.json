@@ -2,10 +2,10 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "RAILPACK",
-    "buildCommand": "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm --filter @trypact/sdk build && pnpm --filter @pact/indexer build"
+    "buildCommand": "corepack enable && pnpm install --frozen-lockfile && pnpm --filter @trypact/sdk build && pnpm --filter @pact/indexer build"
   },
   "deploy": {
-    "startCommand": "cd ../.. && pnpm --filter @pact/indexer start",
+    "startCommand": "pnpm --filter @pact/indexer start",
     "healthcheckPath": "/healthz",
     "healthcheckTimeout": 60,
     "restartPolicyType": "ON_FAILURE",
