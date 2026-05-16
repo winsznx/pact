@@ -1,0 +1,19 @@
+{
+  "chainId": 16661,
+  "config": {
+    "minBond": "5000000000000000000",
+    "treasury": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31"
+  },
+  "contracts": {
+    "AgentNFT_implementation": "0x4EC0DCac00A274Fb69F54cAb62370b2c71989CE4",
+    "AgentNFT_proxy": "0xe76dBE7FCf8c7F784b05DF88996bd63CA2c4d7D6",
+    "AttestationVerifier": "0x765C857B6764c90B0093Ea16f6103902665D0aa2",
+    "PactEscrow": "0xB2b762Df53294923d3eaD00d8118AD37388dD4aA",
+    "PactRegistry": "0x152A5a433A6592df57d7F77B7B01eEE00C481C2d",
+    "ReputationVault": "0x1574E42D7fF268384408430D5b76C88f37b8a72B",
+    "SlashingArbiter": "0x324E5b2183134EB239C7E934438831a15abe7C00"
+  },
+  "deployedAt": 1778219793,
+  "deployer": "0xbF7EF900E2dB365455B91Fb133f78Fc70114Bf31",
+  "redeploy": "phase-1-exit-1-min-bond-5og"
+}
