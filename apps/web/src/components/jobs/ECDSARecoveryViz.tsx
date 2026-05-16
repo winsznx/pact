@@ -141,20 +141,33 @@ export function ECDSARecoveryViz({
             <span className="text-slate-ink">No attestation text yet.</span>
           )}
         </div>
-        <div className="mt-8 grid grid-cols-5 gap-4 font-mono text-caption tracking-caption text-slate-ink">
-          {FIELD_LABELS.map((label, i) => (
-            <span
-              key={label}
-              className={
-                step >= i + 1
-                  ? "text-chartreuse-pulse transition-colors duration-300"
-                  : "text-slate-ink transition-colors duration-300"
-              }
-            >
-              {label}
-            </span>
-          ))}
-        </div>
+        <ol className="mt-12 space-y-4 font-mono text-caption tracking-caption">
+          {FIELD_LABELS.map((label, i) => {
+            const active = step >= i + 1;
+            return (
+              <li
+                key={label}
+                className={
+                  "flex items-center gap-8 transition-colors duration-300 " +
+                  (active ? "text-chartreuse-pulse" : "text-slate-ink")
+                }
+              >
+                <span
+                  aria-hidden
+                  className={
+                    "inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-buttons text-[10px] leading-none transition-colors duration-300 " +
+                    (active
+                      ? "bg-chartreuse-pulse text-midnight-navy"
+                      : "bg-fog-border/40 text-slate-ink")
+                  }
+                >
+                  {i + 1}
+                </span>
+                <span className="break-all">{label}</span>
+              </li>
+            );
+          })}
+        </ol>
       </div>
 
       {/* Step 2 — EIP-191 prefix wrap */}
